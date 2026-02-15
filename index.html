@@ -297,6 +297,363 @@
       box-shadow: 0 12px 50px rgba(139, 58, 92, 0.6);
     }
 
+    .tree-open-btn {
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 190, 100, 0.9);
+      background: linear-gradient(135deg, #c45c7a, #8b3a5c);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 6px 32px rgba(139, 58, 92, 0.5);
+      transition: transform 0.3s ease;
+      z-index: 35;
+    }
+
+    .tree-open-btn:hover { transform: translateX(-50%) scale(1.05); }
+    .tree-open-btn.hidden { opacity: 0; pointer-events: none; }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      z-index: 40;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    /* ========== PANTALLA 3: CAPYBARAS + CORAZÓN GIGANTE ========== */
+    .capybara-bg {
+      background: linear-gradient(180deg, #0a0a1a 0%, #1a0033 18%, #2d0a4e 35%, #fce4ec 58%, #f8bbd9 78%, #e91e63 88%, #880e4f 100%);
+    }
+
+    .capybara-sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48%;
+      z-index: 2;
+      overflow: hidden;
+      background: radial-gradient(ellipse 120% 80% at 50% -20%, #2a2a5a 0%, #1a1a3a 30%, #0f0f2a 55%, #050510 100%);
+    }
+
+    .capybara-nebula {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.15;
+    }
+
+    .capybara-nebula.purple {
+      background: radial-gradient(circle, rgba(180, 80, 255, 0.5) 0%, transparent 70%);
+      width: 400px; height: 400px; top: 5%; left: 8%;
+    }
+
+    .capybara-nebula.blue {
+      background: radial-gradient(circle, rgba(100, 150, 255, 0.45) 0%, transparent 70%);
+      width: 350px; height: 350px; top: 10%; right: 12%;
+    }
+
+    .capybara-nebula.cyan {
+      background: radial-gradient(circle, rgba(100, 200, 255, 0.35) 0%, transparent 70%);
+      width: 300px; height: 300px; bottom: -40px; left: 20%;
+    }
+
+    .capybara-stars-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .capybara-star-dot {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .capybara-star-dot.twinkle {
+      animation: capy-star-twinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes capy-star-twinkle {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 1; }
+    }
+
+    .capybara-horizon {
+      position: absolute;
+      bottom: 52%;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,200,100,0.12) 20%, rgba(200,100,255,0.2) 50%, rgba(100,150,255,0.15) 80%, transparent 100%);
+      z-index: 5;
+      box-shadow: 0 2px 12px rgba(100, 100, 200, 0.25);
+    }
+
+    .capybara-character {
+      position: absolute;
+      bottom: 8%;
+      z-index: 10;
+    }
+
+    .capybara-character.left { left: 6%; }
+    .capybara-character.right { right: 6%; transform: scaleX(-1); }
+
+    .capybara-body {
+      width: 100px;
+      height: 78px;
+      background: linear-gradient(180deg, #8B7355 0%, #A0826D 100%);
+      border-radius: 50px 50px 48% 48%;
+      box-shadow: 0 0 22px rgba(139, 69, 19, 0.45);
+      position: relative;
+    }
+
+    .capybara-head {
+      position: absolute;
+      top: -18px;
+      left: 14px;
+      width: 68px;
+      height: 58px;
+      background: linear-gradient(180deg, #9B8B7E 0%, #8B7355 100%);
+      border-radius: 50% 50% 42% 42%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 8px;
+    }
+
+    .capybara-eye {
+      width: 8px;
+      height: 8px;
+      background: #000;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 2px rgba(255,255,255,0.5);
+    }
+
+    .capybara-mouth {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 12px;
+      background: #6B5D52;
+      border-radius: 0 0 18px 18px;
+    }
+
+    .hearts-column {
+      position: absolute;
+      width: 56px;
+      height: 70%;
+      bottom: 12%;
+      z-index: 12;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .hearts-column.left { left: 14%; }
+    .hearts-column.right { right: 14%; }
+
+    .flying-heart-capy {
+      position: absolute;
+      font-size: 1rem;
+      animation: fly-heart-to-center 2s ease-in forwards;
+      pointer-events: none;
+      filter: drop-shadow(0 0 6px rgba(255, 0, 110, 0.9));
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes fly-heart-to-center {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-180px) rotate(180deg) scale(0.9);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-520px) rotate(360deg) scale(0.35);
+      }
+    }
+
+    .hearts-column.right .flying-heart-capy {
+      animation: fly-heart-to-center-right 2s ease-in forwards;
+    }
+
+    @keyframes fly-heart-to-center-right {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) rotate(0deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-520px) rotate(360deg) scale(0.35);
+      }
+    }
+
+    .heart-giant-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(380px, 85vw);
+      height: min(380px, 85vw);
+      z-index: 18;
+    }
+
+    .heart-giant-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 45px rgba(255, 0, 110, 0.85));
+      animation: giant-heart-pulse 2s ease-in-out infinite;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+
+    .heart-giant-svg.visible {
+      opacity: 1;
+    }
+
+    @keyframes giant-heart-pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 45px rgba(255, 0, 110, 0.85)); }
+      50% { transform: scale(1.06); filter: drop-shadow(0 0 60px rgba(255, 0, 110, 0.95)); }
+    }
+
+    .heart-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72%;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      line-height: 1.55;
+      z-index: 22;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .heart-message.visible {
+      opacity: 1;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.2em;
+      background: #fff;
+      margin-left: 3px;
+      vertical-align: text-bottom;
+      animation: cursor-blink 0.9s infinite;
+    }
+
+    @keyframes cursor-blink {
+      0%, 48% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .capybara-orbit-stars {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      height: 520px;
+      z-index: 16;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      transform-origin: center center;
+    }
+
+    .capybara-orbit-stars.visible {
+      opacity: 1;
+      animation: orbit-capy 22s linear infinite;
+    }
+
+    @keyframes orbit-capy {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .capybara-orbit-star {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffeb3b, #ffd700);
+      box-shadow: 0 0 10px rgba(255, 235, 59, 0.9);
+      top: 50%;
+      left: 50%;
+      margin-top: -4px;
+      margin-left: -4px;
+    }
+
+    .capybara-next-btn {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 190, 100, 0.9);
+      background: linear-gradient(135deg, #c45c7a, #8b3a5c);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 36px rgba(139, 58, 92, 0.5);
+      transition: transform 0.3s ease;
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .capybara-next-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      animation: fade-up 0.5s ease forwards;
+    }
+
+    .capybara-next-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+
     /* ========== CONTENIDO PRINCIPAL (tras pantallas) ========== */
     .main-content {
       position: relative;
@@ -620,12 +977,60 @@
 
   <!-- Pantalla 2: Árbol que crece -->
   <div id="tree-screen" class="screen hidden tree-bg">
+    <button type="button" class="back-btn" id="back-from-tree" aria-label="Volver">← Volver</button>
+    <button type="button" class="tree-open-btn" id="tree-open-btn">Abre Esto 🌸</button>
     <div class="tree-container">
       <div class="tree-wrapper" id="tree-wrapper">
         <div class="tree-trunk" id="tree-trunk"></div>
       </div>
     </div>
-    <button type="button" class="tree-next-btn" id="tree-next-btn">Ver mensajes 💖</button>
+    <button type="button" class="tree-next-btn" id="tree-next-btn">Esto es para ti 💖</button>
+  </div>
+
+  <!-- Pantalla 3: Capybaras + corazón gigante -->
+  <div id="capybara-screen" class="screen hidden capybara-bg">
+    <button type="button" class="back-btn" id="back-from-capybara" aria-label="Volver">← Volver</button>
+    <div class="capybara-sky">
+      <div class="capybara-nebula purple"></div>
+      <div class="capybara-nebula blue"></div>
+      <div class="capybara-nebula cyan"></div>
+      <div class="capybara-stars-layer" id="capybara-stars-layer"></div>
+    </div>
+    <div class="capybara-horizon"></div>
+    <div class="capybara-character left">
+      <div class="capybara-body">
+        <div class="capybara-head">
+          <div class="capybara-eye"></div>
+          <div class="capybara-eye"></div>
+          <div class="capybara-mouth"></div>
+        </div>
+      </div>
+    </div>
+    <div class="capybara-character right">
+      <div class="capybara-body">
+        <div class="capybara-head">
+          <div class="capybara-eye"></div>
+          <div class="capybara-eye"></div>
+          <div class="capybara-mouth"></div>
+        </div>
+      </div>
+    </div>
+    <div id="hearts-column-left" class="hearts-column left"></div>
+    <div id="hearts-column-right" class="hearts-column right"></div>
+    <div id="capybara-orbit-stars" class="capybara-orbit-stars"></div>
+    <div class="heart-giant-wrap">
+      <svg id="heart-giant-svg" class="heart-giant-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff006e"/>
+            <stop offset="100%" style="stop-color:#fb5607"/>
+          </linearGradient>
+        </defs>
+        <path d="M50,85 C25,70 10,55 10,40 C10,28 18,20 28,20 C35,20 42,25 50,35 C58,25 65,20 72,20 C82,20 90,28 90,40 C90,55 75,70 50,85 Z" fill="url(#heartGrad)" stroke="#ff006e" stroke-width="1"/>
+      </svg>
+      <div id="heart-message" class="heart-message"></div>
+    </div>
+    <button type="button" class="capybara-next-btn" id="capybara-next-btn">Ver mensajes 💖</button>
   </div>
 
   <!-- Contenido principal: frases + cierre -->
@@ -862,12 +1267,149 @@
         document.getElementById('universe-screen').classList.add('hidden');
         document.getElementById('tree-screen').classList.remove('hidden');
         document.getElementById('tree-screen').classList.add('visible');
+      });
+
+      document.getElementById('tree-open-btn').addEventListener('click', function() {
+        this.classList.add('hidden');
         createGrowingTree();
+      });
+
+      document.getElementById('back-from-tree').addEventListener('click', function() {
+        document.getElementById('tree-screen').classList.remove('visible');
+        document.getElementById('tree-screen').classList.add('hidden');
+        document.getElementById('universe-screen').classList.remove('hidden');
+        document.getElementById('universe-screen').classList.add('visible');
       });
 
       document.getElementById('tree-next-btn').addEventListener('click', function() {
         document.getElementById('tree-screen').classList.remove('visible');
         document.getElementById('tree-screen').classList.add('hidden');
+        document.getElementById('capybara-screen').classList.remove('hidden');
+        document.getElementById('capybara-screen').classList.add('visible');
+        initCapybaraScreen();
+      });
+
+      // ---------- Pantalla Capybaras: cielo, lluvia de corazones, corazón gigante, texto ----------
+      var capybaraHeartInterval = null;
+      var capybaraMessage = 'Juana Xiomara Mosqueira Cotrina, tu amistad es el regalo más hermoso que la vida puso en mi camino.';
+
+      function createCapybaraSky() {
+        var layer = document.getElementById('capybara-stars-layer');
+        if (!layer) return;
+        layer.innerHTML = '';
+        for (var i = 0; i < 550; i++) {
+          var star = document.createElement('div');
+          star.className = 'capybara-star-dot twinkle';
+          var size = 0.5 + Math.random() * 1.8;
+          star.style.width = size + 'px';
+          star.style.height = size + 'px';
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 2 + 's';
+          star.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+          layer.appendChild(star);
+        }
+      }
+
+      function createCapybaraOrbitStars() {
+        var container = document.getElementById('capybara-orbit-stars');
+        if (!container) return;
+        container.innerHTML = '';
+        var radius = 250;
+        var count = 80;
+        for (var i = 0; i < count; i++) {
+          var angle = (i / count) * Math.PI * 2;
+          var x = 260 + Math.cos(angle) * radius;
+          var y = 260 + Math.sin(angle) * radius;
+          var star = document.createElement('div');
+          star.className = 'capybara-orbit-star';
+          star.style.left = x + 'px';
+          star.style.top = y + 'px';
+          container.appendChild(star);
+        }
+      }
+
+      function typewriterHeartMessage() {
+        var el = document.getElementById('heart-message');
+        if (!el) return;
+        el.classList.add('visible');
+        el.innerHTML = '';
+        var idx = 0;
+        var speed = 38;
+        function type() {
+          if (idx < capybaraMessage.length) {
+            el.innerHTML = capybaraMessage.substring(0, idx + 1) + '<span class="typing-cursor"></span>';
+            idx++;
+            setTimeout(type, speed);
+          } else {
+            el.innerHTML = capybaraMessage;
+            document.getElementById('capybara-next-btn').classList.add('visible');
+          }
+        }
+        type();
+      }
+
+      function initCapybaraScreen() {
+        document.getElementById('heart-giant-svg').classList.remove('visible');
+        document.getElementById('heart-message').classList.remove('visible');
+        document.getElementById('heart-message').innerHTML = '';
+        document.getElementById('capybara-orbit-stars').classList.remove('visible');
+        document.getElementById('capybara-orbit-stars').innerHTML = '';
+        document.getElementById('capybara-next-btn').classList.remove('visible');
+        document.getElementById('hearts-column-left').innerHTML = '';
+        document.getElementById('hearts-column-right').innerHTML = '';
+
+        createCapybaraSky();
+        createCapybaraOrbitStars();
+
+        var leftCol = document.getElementById('hearts-column-left');
+        var rightCol = document.getElementById('hearts-column-right');
+        var heartCount = 0;
+        var maxHearts = 72;
+        capybaraHeartInterval = setInterval(function() {
+          heartCount++;
+          for (var j = 0; j < 8; j++) {
+            var hl = document.createElement('div');
+            hl.className = 'flying-heart-capy';
+            hl.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            hl.style.animationDelay = (j * 25) + 'ms';
+            leftCol.appendChild(hl);
+            setTimeout(function(el) { return function() { if (el.parentNode) el.parentNode.removeChild(el); }; }(hl), 2100);
+            var hr = document.createElement('div');
+            hr.className = 'flying-heart-capy';
+            hr.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            hr.style.animationDelay = (j * 25) + 'ms';
+            rightCol.appendChild(hr);
+            setTimeout(function(el) { return function() { if (el.parentNode) el.parentNode.removeChild(el); }; }(hr), 2100);
+          }
+          if (heartCount >= maxHearts) {
+            clearInterval(capybaraHeartInterval);
+            capybaraHeartInterval = null;
+          }
+        }, 85);
+
+        setTimeout(function() {
+          document.getElementById('heart-giant-svg').classList.add('visible');
+          document.getElementById('capybara-orbit-stars').classList.add('visible');
+        }, 3800);
+
+        setTimeout(function() {
+          typewriterHeartMessage();
+        }, 6000);
+      }
+
+      document.getElementById('back-from-capybara').addEventListener('click', function() {
+        if (capybaraHeartInterval) clearInterval(capybaraHeartInterval);
+        document.getElementById('capybara-screen').classList.remove('visible');
+        document.getElementById('capybara-screen').classList.add('hidden');
+        document.getElementById('tree-screen').classList.remove('hidden');
+        document.getElementById('tree-screen').classList.add('visible');
+      });
+
+      document.getElementById('capybara-next-btn').addEventListener('click', function() {
+        if (capybaraHeartInterval) clearInterval(capybaraHeartInterval);
+        document.getElementById('capybara-screen').classList.remove('visible');
+        document.getElementById('capybara-screen').classList.add('hidden');
         document.getElementById('main-content').classList.remove('hidden');
         createParticles();
         initReveal();
