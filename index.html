@@ -38,6 +38,11 @@
 
     *, *::before, *::after { box-sizing: border-box; }
 
+    button, [role="button"], .center-button {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
@@ -91,6 +96,7 @@
     .star-field {
       position: absolute;
       inset: 0;
+      pointer-events: none;
     }
 
     .orbit-ring {
@@ -168,6 +174,7 @@
       transform: translate(-50%, -50%);
       z-index: 20;
       text-align: center;
+      pointer-events: auto;
     }
 
     .center-button {
@@ -191,6 +198,10 @@
       transition: transform 0.3s ease;
       font-family: 'Cormorant Garamond', serif;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      pointer-events: auto;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .center-button:hover {
@@ -459,6 +470,7 @@
       left: 50%;
       transform: translateX(-50%);
       padding: 16px 36px;
+      min-height: 48px;
       border-radius: 999px;
       border: 2px solid var(--gold-border);
       background: var(--btn-gradient);
@@ -473,6 +485,9 @@
       opacity: 0;
       pointer-events: none;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .tree-next-btn.visible {
@@ -492,6 +507,7 @@
       left: 50%;
       transform: translateX(-50%);
       padding: 14px 32px;
+      min-height: 48px;
       border-radius: 999px;
       border: 2px solid var(--gold-border);
       background: var(--btn-gradient);
@@ -504,6 +520,9 @@
       transition: transform 0.3s ease;
       z-index: 35;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .tree-open-btn:hover { transform: translateX(-50%) scale(1.05); }
@@ -587,6 +606,9 @@
       transition: all 0.3s ease;
       z-index: 40;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .back-btn:hover {
@@ -899,6 +921,7 @@
       left: 50%;
       transform: translateX(-50%);
       padding: 14px 32px;
+      min-height: 48px;
       border-radius: 999px;
       border: 2px solid var(--gold-border);
       background: var(--btn-gradient);
@@ -913,6 +936,9 @@
       opacity: 0;
       pointer-events: none;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .capybara-next-btn.visible {
