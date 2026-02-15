@@ -263,14 +263,13 @@
 
       var verBtn = document.getElementById('universe-ver-btn');
       if (verBtn) {
-        verBtn.addEventListener('click', function(e) {
+        function handleVerClick(e) {
           e.preventDefault();
+          e.stopPropagation();
           goToTreeScreen();
-        });
-        verBtn.addEventListener('touchend', function(e) {
-          e.preventDefault();
-          goToTreeScreen();
-        }, { passive: false });
+        }
+        verBtn.addEventListener('click', handleVerClick);
+        verBtn.addEventListener('touchend', handleVerClick, { passive: false });
       }
 
       document.getElementById('tree-open-btn').addEventListener('click', function() {

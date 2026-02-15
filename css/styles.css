@@ -167,41 +167,65 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
     }
 
-    .universe-center .center-button,
-    .universe-center .universe-ver-btn {
+    .universe-center .center-button {
+      pointer-events: auto;
+    }
+
+    /* Botón Ver: flotante, adelante de todo, saltando */
+    .universe-ver-wrap {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom));
+      left: 0;
+      right: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      padding: 0 16px;
+    }
+
+    .universe-ver-wrap .universe-ver-btn {
       pointer-events: auto;
     }
 
     .universe-ver-btn {
-      min-height: 48px;
-      min-width: 120px;
-      padding: 12px 28px;
+      min-height: 52px;
+      min-width: 140px;
+      padding: 14px 32px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 3.5vw, 1.35rem);
-      font-weight: 600;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-weight: 700;
       color: white;
-      background: rgba(196, 92, 122, 0.85);
-      border: 2px solid var(--gold-border);
+      background: linear-gradient(180deg, #d46080 0%, var(--rose-deep) 100%);
+      border: 3px solid var(--gold-border);
       border-radius: 999px;
       cursor: pointer;
-      box-shadow: 0 4px 24px rgba(139, 58, 92, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 6px 28px rgba(139, 58, 92, 0.6), 0 0 40px rgba(212, 165, 116, 0.25);
+      transition: box-shadow 0.15s ease, background 0.15s ease;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      animation: ver-btn-jump 0.5s ease-in-out infinite;
+      position: relative;
+      z-index: 1000;
     }
 
     .universe-ver-btn:hover {
-      transform: scale(1.05);
-      background: rgba(196, 92, 122, 0.95);
-      box-shadow: 0 6px 32px rgba(139, 58, 92, 0.5);
+      background: linear-gradient(180deg, #e07090 0%, #9b4262 100%);
+      box-shadow: 0 8px 36px rgba(139, 58, 92, 0.7), 0 0 50px rgba(212, 165, 116, 0.35);
     }
 
     .universe-ver-btn:active {
-      transform: scale(0.98);
+      animation: none;
+      transform: translateY(0) scale(0.97);
+    }
+
+    @keyframes ver-btn-jump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
     }
 
     .center-button {
@@ -1293,7 +1317,7 @@
       .center-button .btn-emoji { font-size: 1.75rem; }
       .center-button .btn-name { font-size: clamp(0.9rem, 3vw, 1.1rem); }
 
-      .universe-center { gap: 16px; }
+      .universe-ver-wrap { bottom: max(16px, env(safe-area-inset-bottom)); }
       .universe-ver-btn { min-height: 48px; padding: 12px 24px; }
 
       .tree-open-btn {
@@ -1447,8 +1471,8 @@
       .center-button .btn-title { font-size: 1.25rem; }
       .center-button .btn-emoji { font-size: 1.5rem; }
 
-      .universe-center { gap: 14px; }
-      .universe-ver-btn { min-height: 48px; padding: 10px 20px; font-size: 1.1rem; }
+      .universe-ver-wrap { bottom: max(12px, env(safe-area-inset-bottom)); }
+      .universe-ver-btn { min-height: 48px; padding: 10px 20px; font-size: 1.15rem; }
 
       .tree-wrapper { width: 240px; height: 240px; }
       .tree-trunk.grown { height: 120px; }
