@@ -2,27 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#8b3a5c">
   <title>Para Juana Xiomara — San Valentín 💖</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Paleta principal (rosa / amor) */
       --rose-deep: #8b3a5c;
       --rose-soft: #c45c7a;
       --rose-light: #f5e0e6;
+      --rose-pale: #fce4ec;
       --gold: #d4a574;
+      --gold-border: rgba(212, 165, 116, 0.9);
       --cream: #fdf8f5;
       --dark: #2d1b2e;
       --shadow: rgba(139, 58, 92, 0.15);
       --glow: rgba(212, 165, 116, 0.4);
+      /* Fondos oscuros (universe / árbol / cielo) */
+      --dark-bg: #0f0a1a;
+      --dark-mid: #1a0a2e;
+      --dark-purple: #2d0a4e;
+      --dark-blue: #16213e;
+      /* Botones y acentos */
+      --btn-gradient: linear-gradient(135deg, var(--rose-soft) 0%, var(--rose-deep) 50%, #6b2d4a 100%);
+      --btn-shadow: 0 8px 40px rgba(139, 58, 92, 0.5);
+      /* Safe area para móviles con muesca */
+      --safe-top: env(safe-area-inset-top, 0);
+      --safe-bottom: env(safe-area-inset-bottom, 0);
+      --safe-left: env(safe-area-inset-left, 0);
+      --safe-right: env(safe-area-inset-right, 0);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -32,6 +51,8 @@
       background: var(--cream);
       color: var(--dark);
       overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
     }
 
     .font-elegant { font-family: 'Cormorant Garamond', serif; }
@@ -39,10 +60,17 @@
     /* ========== PANTALLAS (UNIVERSO / ÁRBOL) ========== */
     .screen {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 100;
       transition: opacity 1s ease;
       overflow: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      box-sizing: border-box;
     }
 
     .screen.hidden {
@@ -57,7 +85,7 @@
 
     /* ========== PANTALLA 1: UNIVERSO INFINITO ========== */
     .universe-bg {
-      background: radial-gradient(ellipse 120% 120% at 50% 50%, #0f0a1a 0%, #1a0a2e 30%, #16213e 55%, #0a0a1a 100%);
+      background: radial-gradient(ellipse 120% 120% at 50% 50%, var(--dark-bg) 0%, var(--dark-mid) 30%, var(--dark-blue) 55%, var(--dark-bg) 100%);
     }
 
     .star-field {
@@ -145,9 +173,11 @@
     .center-button {
       width: min(280px, 75vw);
       height: min(280px, 75vw);
+      min-width: 200px;
+      min-height: 200px;
       border-radius: 50%;
-      border: 3px solid rgba(255, 190, 100, 0.9);
-      background: linear-gradient(135deg, #c45c7a 0%, #8b3a5c 50%, #6b2d4a 100%);
+      border: 3px solid var(--gold-border);
+      background: var(--btn-gradient);
       color: white;
       cursor: pointer;
       display: flex;
@@ -156,15 +186,16 @@
       justify-content: center;
       gap: 12px;
       padding: 24px;
-      box-shadow: 0 0 50px rgba(255, 105, 180, 0.5), 0 0 100px rgba(139, 58, 92, 0.3), inset 0 0 40px rgba(255,255,255,0.15);
+      box-shadow: 0 0 50px rgba(196, 92, 122, 0.5), 0 0 100px rgba(139, 58, 92, 0.3), inset 0 0 40px rgba(255,255,255,0.15);
       animation: center-button-pulse 2.5s ease-in-out infinite;
       transition: transform 0.3s ease;
       font-family: 'Cormorant Garamond', serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .center-button:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 70px rgba(255, 105, 180, 0.7), 0 0 120px rgba(139, 58, 92, 0.5);
+      box-shadow: 0 0 70px rgba(196, 92, 122, 0.7), 0 0 120px rgba(139, 58, 92, 0.5);
     }
 
     .center-button:active {
@@ -172,8 +203,8 @@
     }
 
     @keyframes center-button-pulse {
-      0%, 100% { box-shadow: 0 0 50px rgba(255, 105, 180, 0.5), 0 0 100px rgba(139, 58, 92, 0.3), inset 0 0 40px rgba(255,255,255,0.15); }
-      50% { box-shadow: 0 0 70px rgba(255, 105, 180, 0.8), 0 0 130px rgba(139, 58, 92, 0.5), inset 0 0 50px rgba(255,255,255,0.25); }
+      0%, 100% { box-shadow: 0 0 50px rgba(196, 92, 122, 0.5), 0 0 100px rgba(139, 58, 92, 0.3), inset 0 0 40px rgba(255,255,255,0.15); }
+      50% { box-shadow: 0 0 70px rgba(196, 92, 122, 0.8), 0 0 130px rgba(139, 58, 92, 0.5), inset 0 0 50px rgba(255,255,255,0.25); }
     }
 
     .center-button .btn-title {
@@ -195,7 +226,7 @@
 
     /* ========== PANTALLA 2: ÁRBOL QUE CRECE ========== */
     .tree-bg {
-      background: linear-gradient(160deg, #0f0a1a 0%, #1a0033 40%, #2d0a4e 70%, #1a0a2e 100%);
+      background: linear-gradient(160deg, var(--dark-bg) 0%, var(--dark-mid) 40%, var(--dark-purple) 70%, var(--dark-mid) 100%);
     }
 
     .tree-container {
@@ -272,18 +303,19 @@
       transform: translateX(-50%);
       padding: 16px 36px;
       border-radius: 999px;
-      border: 2px solid rgba(255, 190, 100, 0.9);
-      background: linear-gradient(135deg, #c45c7a, #8b3a5c);
+      border: 2px solid var(--gold-border);
+      background: var(--btn-gradient);
       color: white;
       font-family: 'Outfit', sans-serif;
       font-size: 1.15rem;
       font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 8px 40px rgba(139, 58, 92, 0.5);
+      box-shadow: var(--btn-shadow);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       z-index: 30;
       opacity: 0;
       pointer-events: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .tree-next-btn.visible {
@@ -304,16 +336,17 @@
       transform: translateX(-50%);
       padding: 14px 32px;
       border-radius: 999px;
-      border: 2px solid rgba(255, 190, 100, 0.9);
-      background: linear-gradient(135deg, #c45c7a, #8b3a5c);
+      border: 2px solid var(--gold-border);
+      background: var(--btn-gradient);
       color: white;
       font-family: 'Outfit', sans-serif;
       font-size: 1.1rem;
       font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 6px 32px rgba(139, 58, 92, 0.5);
+      box-shadow: var(--btn-shadow);
       transition: transform 0.3s ease;
       z-index: 35;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .tree-open-btn:hover { transform: translateX(-50%) scale(1.05); }
@@ -323,7 +356,12 @@
       position: absolute;
       top: 20px;
       left: 20px;
-      padding: 10px 20px;
+      padding: 12px 20px;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 999px;
       border: 2px solid rgba(255, 255, 255, 0.6);
       background: rgba(255, 255, 255, 0.15);
@@ -335,6 +373,7 @@
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
       z-index: 40;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .back-btn:hover {
@@ -344,7 +383,7 @@
 
     /* ========== PANTALLA 3: CAPYBARAS + CORAZÓN GIGANTE ========== */
     .capybara-bg {
-      background: linear-gradient(180deg, #0a0a1a 0%, #1a0033 18%, #2d0a4e 35%, #fce4ec 58%, #f8bbd9 78%, #e91e63 88%, #880e4f 100%);
+      background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-mid) 18%, var(--dark-purple) 35%, var(--rose-pale) 58%, var(--rose-light) 78%, var(--rose-soft) 88%, var(--rose-deep) 100%);
     }
 
     .capybara-sky {
@@ -355,7 +394,7 @@
       height: 48%;
       z-index: 2;
       overflow: hidden;
-      background: radial-gradient(ellipse 120% 80% at 50% -20%, #2a2a5a 0%, #1a1a3a 30%, #0f0f2a 55%, #050510 100%);
+      background: radial-gradient(ellipse 120% 80% at 50% -20%, #2a2a5a 0%, var(--dark-mid) 30%, var(--dark-bg) 55%, #050510 100%);
     }
 
     .capybara-nebula {
@@ -630,18 +669,19 @@
       transform: translateX(-50%);
       padding: 14px 32px;
       border-radius: 999px;
-      border: 2px solid rgba(255, 190, 100, 0.9);
-      background: linear-gradient(135deg, #c45c7a, #8b3a5c);
+      border: 2px solid var(--gold-border);
+      background: var(--btn-gradient);
       color: white;
       font-family: 'Outfit', sans-serif;
       font-size: 1.05rem;
       font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 8px 36px rgba(139, 58, 92, 0.5);
+      box-shadow: var(--btn-shadow);
       transition: transform 0.3s ease;
       z-index: 30;
       opacity: 0;
       pointer-events: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .capybara-next-btn.visible {
@@ -858,7 +898,7 @@
       z-index: 1;
       padding: 5rem 2rem;
       text-align: center;
-      background: linear-gradient(180deg, transparent 0%, rgba(245, 224, 230, 0.6) 50%, rgba(139, 58, 92, 0.08) 100%);
+      background: linear-gradient(180deg, transparent 0%, var(--rose-light) 50%, rgba(139, 58, 92, 0.08) 100%);
     }
 
     .closing-box {
@@ -940,7 +980,193 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    /* ========== RESPONSIVE ========== */
+    /* ========== RESPONSIVE — 100% ADAPTABLE MÓVIL ========== */
+    @media (max-width: 768px) {
+      .back-btn {
+        top: max(16px, var(--safe-top));
+        left: max(16px, var(--safe-left));
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+
+      .center-button {
+        width: min(260px, 80vw);
+        height: min(260px, 80vw);
+        min-width: 180px;
+        min-height: 180px;
+        gap: 8px;
+        padding: 20px;
+      }
+
+      .center-button .btn-title { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+      .center-button .btn-emoji { font-size: 1.75rem; }
+      .center-button .btn-name { font-size: clamp(0.9rem, 3vw, 1.1rem); }
+
+      .tree-open-btn {
+        top: max(28px, calc(12px + var(--safe-top)));
+        padding: 14px 28px;
+        font-size: 1rem;
+        min-height: 48px;
+      }
+
+      .tree-next-btn {
+        bottom: max(24px, calc(16px + var(--safe-bottom)));
+        left: 50%;
+        right: auto;
+        padding: 14px 28px;
+        font-size: 1rem;
+        min-height: 48px;
+        width: calc(100% - 32px);
+        max-width: 320px;
+      }
+
+      .tree-wrapper {
+        width: 280px;
+        height: 280px;
+      }
+
+      .tree-trunk.grown { height: 140px; }
+      .branch { bottom: 140px; }
+      .branch.grown { transition: width 0.9s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+      .capybara-sky { height: 46%; }
+      .capybara-horizon { bottom: 46%; }
+
+      .capybara-character { bottom: 6%; }
+      .capybara-character.left { left: 4%; }
+      .capybara-character.right { right: 4%; }
+
+      .capybara-body {
+        width: 80px;
+        height: 62px;
+        border-radius: 40px 40px 48% 48%;
+      }
+
+      .capybara-head {
+        top: -14px;
+        left: 10px;
+        width: 56px;
+        height: 48px;
+      }
+
+      .capybara-eye { width: 6px; height: 6px; }
+      .capybara-mouth { width: 14px; height: 10px; bottom: 6px; }
+
+      .hearts-column {
+        width: 44px;
+        height: 65%;
+        bottom: 14%;
+      }
+
+      .hearts-column.left { left: 10%; }
+      .hearts-column.right { right: 10%; }
+
+      .flying-heart-capy { font-size: 0.85rem; }
+
+      .heart-giant-wrap {
+        width: min(320px, 88vw);
+        height: min(320px, 88vw);
+      }
+
+      .heart-message {
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
+        width: 78%;
+        min-height: 70px;
+        line-height: 1.5;
+      }
+
+      .capybara-orbit-stars {
+        width: min(420px, 92vmin);
+        height: min(420px, 92vmin);
+      }
+
+      .capybara-orbit-star {
+        width: 6px;
+        height: 6px;
+        margin-top: -3px;
+        margin-left: -3px;
+      }
+
+      .capybara-next-btn {
+        bottom: max(24px, calc(12px + var(--safe-bottom)));
+        padding: 14px 24px;
+        font-size: 0.95rem;
+        min-height: 48px;
+        width: calc(100% - 32px);
+        max-width: 280px;
+      }
+
+      .phrases-section {
+        padding: 2.5rem 1rem 3.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.5rem, 5.5vw, 1.9rem);
+        margin-bottom: 2rem;
+      }
+
+      .phrase-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 16px;
+      }
+
+      .phrase-card .text { font-size: 0.98rem; }
+      .phrase-card .icon { font-size: 1.35rem; }
+
+      .closing {
+        padding: 3rem 1rem 4rem;
+      }
+
+      .closing-box {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+        margin: 0 0.5rem;
+      }
+
+      .closing .big-heart { font-size: 2.5rem; }
+      .closing h2 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+      .closing p { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 480px) {
+      .center-button {
+        width: min(220px, 82vw);
+        height: min(220px, 82vw);
+        min-width: 160px;
+        min-height: 160px;
+        padding: 16px;
+      }
+
+      .center-button .btn-title { font-size: 1.25rem; }
+      .center-button .btn-emoji { font-size: 1.5rem; }
+
+      .tree-wrapper { width: 240px; height: 240px; }
+      .tree-trunk.grown { height: 120px; }
+      .branch { bottom: 120px; }
+
+      .capybara-body { width: 70px; height: 54px; }
+      .capybara-head { width: 48px; height: 42px; top: -12px; left: 8px; }
+
+      .hearts-column { width: 36px; }
+      .flying-heart-capy { font-size: 0.75rem; }
+
+      .heart-giant-wrap {
+        width: min(280px, 90vw);
+        height: min(280px, 90vw);
+      }
+
+      .heart-message { font-size: 0.82rem; min-height: 60px; }
+
+      .capybara-orbit-stars {
+        width: min(360px, 95vmin);
+        height: min(360px, 95vmin);
+      }
+
+      .phrases-section { padding: 2rem 0.75rem 3rem; }
+      .phrase-card { padding: 1.25rem 1rem; }
+      .phrase-card .text { font-size: 0.92rem; }
+    }
+
     @media (min-width: 640px) {
       .phrases-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1315,16 +1541,19 @@
         var container = document.getElementById('capybara-orbit-stars');
         if (!container) return;
         container.innerHTML = '';
-        var radius = 250;
+        var radiusPct = 48.08;
         var count = 80;
         for (var i = 0; i < count; i++) {
           var angle = (i / count) * Math.PI * 2;
-          var x = 260 + Math.cos(angle) * radius;
-          var y = 260 + Math.sin(angle) * radius;
+          var leftPct = 50 + radiusPct * Math.cos(angle);
+          var topPct = 50 + radiusPct * Math.sin(angle);
           var star = document.createElement('div');
           star.className = 'capybara-orbit-star';
-          star.style.left = x + 'px';
-          star.style.top = y + 'px';
+          star.style.left = leftPct + '%';
+          star.style.top = topPct + '%';
+          star.style.marginLeft = '';
+          star.style.marginTop = '';
+          star.style.transform = 'translate(-50%, -50%)';
           container.appendChild(star);
         }
       }
