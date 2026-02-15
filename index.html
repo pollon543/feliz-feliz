@@ -314,6 +314,77 @@
       50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
     }
 
+    /* Corazón premium (corazon.png) — animación profesional y adaptable */
+    .tree-premium-heart-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      width: min(220px, 55vw);
+      height: min(220px, 55vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .tree-premium-heart-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      animation: premium-heart-float 6s ease-in-out infinite;
+    }
+
+    .tree-premium-heart-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.4)) drop-shadow(0 0 60px rgba(139, 58, 92, 0.25));
+      animation: premium-heart-pulse 3s ease-in-out infinite;
+    }
+
+    .tree-premium-heart-inner::after {
+      content: '';
+      position: absolute;
+      inset: -15%;
+      background: linear-gradient(105deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(255, 255, 255, 0.25) 50%,
+        transparent 60%,
+        transparent 100%);
+      background-size: 200% 100%;
+      animation: premium-heart-shine 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes premium-heart-float {
+      0%, 100% { transform: translate(0, 0) rotate(-2deg); }
+      25% { transform: translate(8px, -12px) rotate(1deg); }
+      50% { transform: translate(-6px, 8px) rotate(2deg); }
+      75% { transform: translate(10px, 5px) rotate(-1deg); }
+    }
+
+    @keyframes premium-heart-pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.4)) drop-shadow(0 0 60px rgba(139, 58, 92, 0.25)); opacity: 0.92; }
+      50% { transform: scale(1.06); filter: drop-shadow(0 0 40px rgba(255, 105, 180, 0.55)) drop-shadow(0 0 80px rgba(139, 58, 92, 0.35)); opacity: 1; }
+    }
+
+    @keyframes premium-heart-shine {
+      0% { background-position: 200% 0; opacity: 0; }
+      45% { opacity: 0; }
+      50% { opacity: 1; }
+      55% { opacity: 0; }
+      100% { background-position: -100% 0; opacity: 0; }
+    }
+
+    .tree-screen:has(.tree-bouquet-wrap.visible) .tree-premium-heart-wrap {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
     .tree-container {
       position: absolute;
       inset: 0;
@@ -1180,6 +1251,11 @@
         max-width: 320px;
       }
 
+      .tree-premium-heart-wrap {
+        width: min(180px, 50vw);
+        height: min(180px, 50vw);
+      }
+
       .tree-bouquet-phrase {
         font-size: clamp(1rem, 4vw, 1.25rem);
         margin-bottom: 1rem;
@@ -1372,6 +1448,11 @@
   <!-- Pantalla 2: Árbol / Ramo -->
   <div id="tree-screen" class="screen hidden tree-bg">
     <div id="tree-stars-hearts-bg" class="tree-stars-hearts-bg"></div>
+    <div class="tree-premium-heart-wrap" aria-hidden="true">
+      <div class="tree-premium-heart-inner">
+        <img src="img/corazon.png" alt="" class="tree-premium-heart-img" width="220" height="220">
+      </div>
+    </div>
     <button type="button" class="back-btn" id="back-from-tree" aria-label="Volver">← Volver</button>
     <button type="button" class="tree-open-btn" id="tree-open-btn">Abre Esto 🌸</button>
     <div class="tree-container">
