@@ -224,9 +224,94 @@
       font-style: italic;
     }
 
-    /* ========== PANTALLA 2: ÁRBOL QUE CRECE ========== */
+    /* ========== PANTALLA 2: ÁRBOL / RAMO ========== */
     .tree-bg {
-      background: linear-gradient(160deg, var(--dark-bg) 0%, var(--dark-mid) 40%, var(--dark-purple) 70%, var(--dark-mid) 100%);
+      background: linear-gradient(180deg,
+        var(--dark-bg) 0%,
+        var(--dark-mid) 18%,
+        #1e1235 35%,
+        #2a1545 50%,
+        #3d2055 65%,
+        #5a2d65 78%,
+        var(--rose-soft) 90%,
+        var(--rose-deep) 100%);
+    }
+
+    .tree-stars-hearts-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .tree-star-dot {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.85);
+    }
+
+    .tree-star-dot.twinkle {
+      animation: tree-star-twinkle 2.5s ease-in-out infinite;
+    }
+
+    @keyframes tree-star-twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .tree-heart-float {
+      position: absolute;
+      font-size: 1rem;
+      opacity: 0.5;
+      animation: tree-heart-float 14s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.6));
+    }
+
+    @keyframes tree-heart-float {
+      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      25% { transform: translate(25px, -35px) scale(1.1) rotate(8deg); }
+      50% { transform: translate(-20px, 20px) scale(0.9) rotate(-5deg); }
+      75% { transform: translate(30px, 15px) scale(1.05) rotate(3deg); }
+    }
+
+    .tree-hearts-orbit-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(420px, 95vmin);
+      height: min(420px, 95vmin);
+      transform: translate(-50%, -50%);
+      z-index: 14;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .tree-hearts-orbit-wrap.visible {
+      opacity: 1;
+      animation: tree-orbit-rotate 25s linear infinite;
+    }
+
+    @keyframes tree-orbit-rotate {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .tree-heart-orbit {
+      position: absolute;
+      font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.8));
+      animation: tree-heart-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes tree-heart-pulse {
+      0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
     }
 
     .tree-container {
@@ -235,6 +320,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 10;
     }
 
     .tree-wrapper {
@@ -1283,11 +1369,13 @@
     </div>
   </div>
 
-  <!-- Pantalla 2: Árbol que crece -->
+  <!-- Pantalla 2: Árbol / Ramo -->
   <div id="tree-screen" class="screen hidden tree-bg">
+    <div id="tree-stars-hearts-bg" class="tree-stars-hearts-bg"></div>
     <button type="button" class="back-btn" id="back-from-tree" aria-label="Volver">← Volver</button>
     <button type="button" class="tree-open-btn" id="tree-open-btn">Abre Esto 🌸</button>
     <div class="tree-container">
+      <div id="tree-hearts-orbit-wrap" class="tree-hearts-orbit-wrap"></div>
       <div id="tree-bouquet-wrap" class="tree-bouquet-wrap">
         <p class="tree-bouquet-phrase">Eres esa amistad que no se mide en tiempo, sino en momentos inolvidables.</p>
         <div class="tree-bouquet-img-wrap">
@@ -1589,12 +1677,64 @@
         }, 6200);
       }
 
+      // ---------- Pantalla árbol/ramo: estrellas, corazones flotantes, corazones orbitando ----------
+      function createTreeStarsHearts() {
+        var container = document.getElementById('tree-stars-hearts-bg');
+        if (!container) return;
+        container.innerHTML = '';
+        for (var i = 0; i < 400; i++) {
+          var star = document.createElement('div');
+          star.className = 'tree-star-dot twinkle';
+          var size = 0.6 + Math.random() * 2;
+          star.style.width = size + 'px';
+          star.style.height = size + 'px';
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 2.5 + 's';
+          star.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+          container.appendChild(star);
+        }
+        for (var i = 0; i < 120; i++) {
+          var h = document.createElement('div');
+          h.className = 'tree-heart-float';
+          h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+          h.style.left = Math.random() * 100 + '%';
+          h.style.top = Math.random() * 100 + '%';
+          h.style.animationDelay = Math.random() * 14 + 's';
+          h.style.animationDuration = (10 + Math.random() * 8) + 's';
+          h.style.fontSize = (0.75 + Math.random() * 0.6) + 'rem';
+          container.appendChild(h);
+        }
+      }
+
+      function createTreeHeartsOrbit() {
+        var wrap = document.getElementById('tree-hearts-orbit-wrap');
+        if (!wrap) return;
+        wrap.innerHTML = '';
+        var count = 36;
+        var radiusPct = 48;
+        for (var i = 0; i < count; i++) {
+          var angle = (i / count) * Math.PI * 2;
+          var leftPct = 50 + radiusPct * Math.cos(angle);
+          var topPct = 50 + radiusPct * Math.sin(angle);
+          var heart = document.createElement('div');
+          heart.className = 'tree-heart-orbit';
+          heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+          heart.style.left = leftPct + '%';
+          heart.style.top = topPct + '%';
+          heart.style.animationDelay = (i * 0.05) + 's';
+          wrap.appendChild(heart);
+        }
+        wrap.classList.add('visible');
+      }
+
       // ---------- Navegación entre pantallas ----------
       document.getElementById('universe-btn').addEventListener('click', function() {
         document.getElementById('universe-screen').classList.remove('visible');
         document.getElementById('universe-screen').classList.add('hidden');
         document.getElementById('tree-screen').classList.remove('hidden');
         document.getElementById('tree-screen').classList.add('visible');
+        createTreeStarsHearts();
       });
 
       document.getElementById('tree-open-btn').addEventListener('click', function() {
@@ -1602,6 +1742,7 @@
         document.getElementById('tree-wrapper').style.display = 'none';
         var bouquetWrap = document.getElementById('tree-bouquet-wrap');
         bouquetWrap.classList.add('visible');
+        createTreeHeartsOrbit();
         setTimeout(function() {
           var btn = document.getElementById('tree-next-btn');
           if (btn) btn.classList.add('visible');
@@ -1617,10 +1758,12 @@
         var treeWrap = document.getElementById('tree-wrapper');
         var bouquetWrap = document.getElementById('tree-bouquet-wrap');
         var treeNext = document.getElementById('tree-next-btn');
+        var orbitWrap = document.getElementById('tree-hearts-orbit-wrap');
         if (treeOpen) treeOpen.classList.remove('hidden');
         if (treeWrap) treeWrap.style.display = '';
         if (bouquetWrap) bouquetWrap.classList.remove('visible');
         if (treeNext) treeNext.classList.remove('visible');
+        if (orbitWrap) { orbitWrap.classList.remove('visible'); orbitWrap.innerHTML = ''; }
       });
 
       document.getElementById('tree-next-btn').addEventListener('click', function() {
