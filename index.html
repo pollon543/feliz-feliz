@@ -172,8 +172,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 20;
+      z-index: 25;
       text-align: center;
+      pointer-events: none;
+    }
+
+    .universe-center .center-button {
       pointer-events: auto;
     }
 
@@ -199,9 +203,10 @@
       font-family: 'Cormorant Garamond', serif;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      pointer-events: auto;
       user-select: none;
       -webkit-user-select: none;
+      position: relative;
+      z-index: 30;
     }
 
     .center-button:hover {
@@ -233,6 +238,12 @@
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       opacity: 0.95;
       font-style: italic;
+    }
+
+    .center-button .btn-title,
+    .center-button .btn-emoji,
+    .center-button .btn-name {
+      pointer-events: none;
     }
 
     /* ========== PANTALLA 2: ÁRBOL / RAMO ========== */
@@ -1463,7 +1474,7 @@
   <div id="universe-screen" class="screen visible universe-bg">
     <div class="star-field" id="star-field"></div>
     <div class="universe-center">
-      <button type="button" class="center-button" id="universe-btn" aria-label="Esto es para ti">
+      <button type="button" class="center-button" id="universe-btn" aria-label="Esto es para ti, Juana Xiomara">
         <span class="btn-title">Esto es para ti</span>
         <span class="btn-emoji">💖</span>
         <span class="btn-name" id="universe-btn-name">Juana Xiomara</span>
@@ -1835,14 +1846,29 @@
         wrap.classList.add('visible');
       }
 
-      // ---------- Navegación entre pantallas ----------
-      document.getElementById('universe-btn').addEventListener('click', function() {
+      // ---------- Botón redondo del universo: funciona con clic y toque en celular ----------
+      var universeBtnLastTouch = 0;
+      function handleUniverseButton(e) {
+        var now = Date.now();
+        if (e.type === 'click' && (now - universeBtnLastTouch) < 400) return;
+        if (e.type === 'touchend') {
+          universeBtnLastTouch = now;
+          e.preventDefault();
+        }
+        var x = (e.clientX != null) ? e.clientX : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : 0);
+        var y = (e.clientY != null) ? e.clientY : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : 0);
+        createHeartBurst(x, y);
         document.getElementById('universe-screen').classList.remove('visible');
         document.getElementById('universe-screen').classList.add('hidden');
         document.getElementById('tree-screen').classList.remove('hidden');
         document.getElementById('tree-screen').classList.add('visible');
         createTreeStarsHearts();
-      });
+      }
+      var universeBtn = document.getElementById('universe-btn');
+      if (universeBtn) {
+        universeBtn.addEventListener('click', handleUniverseButton);
+        universeBtn.addEventListener('touchend', handleUniverseButton, { passive: false });
+      }
 
       document.getElementById('tree-open-btn').addEventListener('click', function() {
         this.classList.add('hidden');
@@ -2069,10 +2095,6 @@
         }
         setTimeout(function() { container.innerHTML = ''; }, 1300);
       }
-
-      document.getElementById('universe-btn').addEventListener('click', function(e) {
-        createHeartBurst(e.clientX, e.clientY);
-      });
 
       createUniverse();
     })();
