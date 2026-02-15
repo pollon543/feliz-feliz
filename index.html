@@ -1,1 +1,1216 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universo Mágico para Juana 🌌💖</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .app-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .font-script { font-family: 'Great Vibes', cursive; }
+    .font-elegant { font-family: 'Cormorant Garamond', serif; }
+    
+    /* SCREEN 1: UNIVERSO INFINITO */
+    .universe-bg {
+      background: radial-gradient(ellipse at 50% 50%, #0a0a2e 0%, #16213e 25%, #0f3460 50%, #01070e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .star-field {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff, #ffd700, #ffaa00);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+    
+    .star.twinkle {
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    .star.orbit-slow {
+      animation: orbit-slow 60s linear infinite;
+    }
+    
+    .star.orbit-medium {
+      animation: orbit-medium 40s linear infinite;
+    }
+    
+    .star.orbit-fast {
+      animation: orbit-fast 20s linear infinite;
+    }
+    
+    @keyframes orbit-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes orbit-medium {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes orbit-fast {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .heart-universe {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: heart-float 15s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8));
+    }
+    
+    @keyframes heart-float {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+      25% { transform: translateY(-50px) translateX(60px) scale(1.2); opacity: 0.9; }
+      50% { transform: translateY(-80px) translateX(-40px) scale(0.8); opacity: 0.5; }
+      75% { transform: translateY(-30px) translateX(80px) scale(1.1); opacity: 0.8; }
+    }
+    
+    .universe-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      text-align: center;
+    }
+    
+    .center-button {
+      background: linear-gradient(135deg, #ff006e 0%, #ff006e 50%, #fb5607 100%);
+      border: 3px solid #ffbe0b;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 0, 110, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.3);
+      animation: pulse-button 2s ease-in-out infinite;
+      transition: all 0.3s ease;
+      font-family: 'Great Vibes', cursive;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .center-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 120px rgba(255, 0, 110, 0.7), inset 0 0 60px rgba(255, 255, 255, 0.5);
+    }
+    
+    .center-button:active {
+      transform: scale(0.95);
+    }
+    
+    @keyframes pulse-button {
+      0%, 100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 0, 110, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.3); }
+      50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 0, 110, 0.7), inset 0 0 60px rgba(255, 255, 255, 0.5); }
+    }
+    
+    .button-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+    
+    .button-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-style: italic;
+    }
+    
+    /* SCREEN 2: ÁRBOL CRECIENTE */
+    .tree-bg {
+      background: linear-gradient(135deg, #0a0a2e 0%, #1a0033 50%, #2d0a4e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tree-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .tree-wrapper {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+    
+    .tree-trunk {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      background: linear-gradient(180deg, #8B4513 0%, #654321 100%);
+      border-radius: 15px;
+      animation: grow-trunk 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      transform-origin: bottom center;
+      box-shadow: 0 0 20px rgba(139, 69, 19, 0.6);
+    }
+    
+    @keyframes grow-trunk {
+      0% { 
+        height: 0;
+        opacity: 0;
+      }
+      100% { 
+        height: 200px;
+        opacity: 1;
+      }
+    }
+    
+    .branch {
+      position: absolute;
+      bottom: 200px;
+      left: 50%;
+      transform-origin: left center;
+      background: linear-gradient(90deg, #654321 0%, #8B4513 100%);
+      height: 12px;
+      border-radius: 6px;
+      animation: grow-branch 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      box-shadow: 0 0 10px rgba(139, 69, 19, 0.5);
+    }
+    
+    @keyframes grow-branch {
+      0% { 
+        width: 0;
+        opacity: 0;
+      }
+      100% { 
+        opacity: 1;
+      }
+    }
+    
+    .flower {
+      position: absolute;
+      border-radius: 50%;
+      animation: bloom-flower 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+      opacity: 0;
+    }
+    
+    @keyframes bloom-flower {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.3);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .open-tree-btn {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff006e 0%, #fb5607 100%);
+      border: 2px solid #ffbe0b;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      transition: all 0.3s ease;
+      z-index: 25;
+      font-family: 'Great Vibes', cursive;
+    }
+    
+    .open-tree-btn:hover {
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+    }
+    
+    .open-tree-btn:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+    
+    .open-tree-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .capybara-btn {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff006e 0%, #fb5607 100%);
+      border: 2px solid #ffbe0b;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      transition: all 0.3s ease;
+      z-index: 25;
+      font-family: 'Great Vibes', cursive;
+    }
+    
+    .capybara-btn:hover {
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+    }
+    
+    .capybara-btn:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+    
+    /* SCREEN 3: CAPYBARAS CON CORAZONES */
+    .capybara-bg {
+      background: linear-gradient(180deg, #0a0a1a 0%, #1a0033 12%, #2d0a4e 25%, #fce4ec 55%, #f8bbd9 75%, #e91e63 85%, #880e4f 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Cielo de estrellas del universo */
+    .universe-sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 45%;
+      z-index: 4;
+      overflow: hidden;
+      background: radial-gradient(ellipse 120% 80% at 50% -10%, #2a2a5a 0%, #1a1a3a 25%, #0f0f2a 50%, #050510 100%);
+    }
+    
+    .stars-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    
+    .star-point {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.8);
+    }
+    
+    .star-point.twinkle {
+      animation: star-twinkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes star-twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+    
+    .star-point.blink {
+      animation: star-blink 3s ease-in-out infinite;
+    }
+    
+    @keyframes star-blink {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.9; }
+    }
+    
+    /* Nebulosas de color */
+    .nebula-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+    }
+    
+    .nebula-glow.purple {
+      background: radial-gradient(circle, rgba(180, 80, 255, 0.4) 0%, transparent 70%);
+    }
+    
+    .nebula-glow.blue {
+      background: radial-gradient(circle, rgba(100, 150, 255, 0.4) 0%, transparent 70%);
+    }
+    
+    .nebula-glow.cyan {
+      background: radial-gradient(circle, rgba(100, 200, 255, 0.3) 0%, transparent 70%);
+    }
+    
+    /* Horizonte cielo-tierra */
+    .horizon-line {
+      position: absolute;
+      bottom: 55%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 200, 100, 0.1) 15%,
+        rgba(255, 180, 80, 0.15) 30%,
+        rgba(200, 100, 255, 0.2) 50%,
+        rgba(100, 150, 255, 0.15) 70%,
+        rgba(255, 200, 100, 0.1) 85%,
+        transparent 100%);
+      z-index: 6;
+      box-shadow: 0 2px 10px rgba(100, 100, 200, 0.3);
+    }
+    
+    /* Capybaras */
+    .capybara {
+      position: absolute;
+      bottom: 10%;
+      z-index: 8;
+    }
+    
+    .capybara-left {
+      left: 5%;
+    }
+    
+    .capybara-right {
+      right: 5%;
+      transform: scaleX(-1);
+    }
+    
+    .capybara-body {
+      position: relative;
+      width: 100px;
+      height: 80px;
+      background: linear-gradient(180deg, #8B7355 0%, #A0826D 100%);
+      border-radius: 50px 50px 50% 50%;
+      box-shadow: 0 0 20px rgba(139, 69, 19, 0.4);
+    }
+    
+    .capybara-head {
+      position: absolute;
+      top: -20px;
+      left: 15px;
+      width: 70px;
+      height: 60px;
+      background: linear-gradient(180deg, #9B8B7E 0%, #8B7355 100%);
+      border-radius: 50% 50% 40% 40%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px;
+    }
+    
+    .capybara-eye {
+      width: 8px;
+      height: 8px;
+      background: #000;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.5);
+    }
+    
+    .capybara-mouth {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 15px;
+      background: #6B5D52;
+      border-radius: 0 0 20px 20px;
+    }
+    
+    .capybara-back {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      width: 30px;
+      height: 40px;
+      background: linear-gradient(90deg, transparent 0%, #8B7355 50%, #7A6B5E 100%);
+      border-radius: 50% 0 50% 50%;
+    }
+    
+    /* Contenedor de corazones voladores - EN FILA VERTICAL */
+    .hearts-container {
+      position: absolute;
+      width: 60px;
+      height: 600px;
+      bottom: 5%;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    
+    .hearts-left {
+      left: 5%;
+    }
+    
+    .hearts-right {
+      right: 5%;
+    }
+    
+    .flying-heart {
+      position: absolute;
+      font-size: 1rem;
+      animation: fly-heart-up 2s ease-in forwards;
+      pointer-events: none;
+      filter: drop-shadow(0 0 4px rgba(255, 0, 110, 0.9));
+      left: 0;
+    }
+    
+    @keyframes fly-heart-up {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotateZ(0deg) scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-200px) rotateZ(180deg) scale(0.9);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-500px) rotateZ(360deg) scale(0.3);
+      }
+    }
+    
+    .hearts-right .flying-heart {
+      animation: fly-heart-up-right 2s ease-in forwards;
+    }
+    
+    @keyframes fly-heart-up-right {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotateZ(0deg) scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-200px) rotateZ(180deg) scale(0.9);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-500px) rotateZ(360deg) scale(0.3);
+      }
+    }
+    
+    /* Contenedor de estrellas orbitando */
+    .stars-orbit-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 550px;
+      height: 550px;
+      z-index: 12;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .stars-orbit-container.visible {
+      opacity: 1;
+    }
+    
+    .orbit-star {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffeb3b, #ffd700);
+      box-shadow: 0 0 10px rgba(255, 235, 59, 0.95), 0 0 20px rgba(255, 215, 0, 0.7);
+      top: 50%;
+      left: 50%;
+      margin-top: -4px;
+      margin-left: -4px;
+    }
+    
+    /* Corazón gigante central */
+    .heart-giant-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      z-index: 15;
+    }
+    
+    .giant-heart {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 40px rgba(255, 0, 110, 0.8));
+      animation: heart-pulse 2s ease-in-out infinite;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    
+    .giant-heart.visible {
+      opacity: 1;
+    }
+    
+    @keyframes heart-pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 40px rgba(255, 0, 110, 0.8));
+      }
+      50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 60px rgba(255, 0, 110, 0.95));
+      }
+    }
+    
+    .heart-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: white;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+      max-width: 70%;
+      line-height: 1.6;
+      z-index: 20;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .heart-text.visible {
+      opacity: 1;
+    }
+    
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.3em;
+      background-color: white;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    
+    /* Botón volver */
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+    
+    .back-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .light-particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float-light 20s ease-in-out infinite;
+    }
+    
+    @keyframes float-light {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+      50% { transform: translateY(-100px) translateX(100px); opacity: 0.8; }
+    }
+    
+    .screen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: opacity 1s ease-in-out;
+      z-index: 10;
+    }
+    
+    .screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .screen.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full m-0 p-0">
+  <div class="app-wrapper"><!-- SCREEN 1: UNIVERSO INFINITO -->
+   <div id="universe-screen" class="screen visible universe-bg">
+    <div class="star-field" id="star-field"></div>
+    <div class="universe-center"><button id="universe-btn" class="center-button">
+      <div class="button-title">
+       Esto es para ti
+      </div>
+      <div style="font-size: 2rem;">
+       💖
+      </div>
+      <div class="button-subtitle" id="button-name">
+       Juana Xiomara
+      </div></button>
+    </div>
+   </div><!-- SCREEN 2: ÁRBOL CRECIENTE -->
+   <div id="tree-screen" class="screen hidden tree-bg"><button id="open-tree-btn" class="open-tree-btn">Abre Esto 🌸</button> <button id="capybara-btn" class="capybara-btn">Esto es para ti 💖</button>
+    <div class="tree-container">
+     <div class="tree-wrapper" id="tree-wrapper"></div>
+    </div><button id="back-from-tree" class="back-btn">← Volver</button>
+   </div><!-- SCREEN 3: CAPYBARAS CON CORAZONES -->
+   <div id="capybara-screen" class="screen hidden capybara-bg"><!-- Cielo de universo con estrellas billones -->
+    <div class="universe-sky">
+     <div class="nebula-glow purple" style="width: 450px; height: 450px; top: 5%; left: 5%;"></div>
+     <div class="nebula-glow blue" style="width: 400px; height: 400px; top: 8%; right: 10%;"></div>
+     <div class="nebula-glow cyan" style="width: 350px; height: 350px; bottom: -50px; left: 15%;"></div>
+     <div class="nebula-glow purple" style="width: 300px; height: 300px; bottom: -30px; right: 20%;"></div>
+     <div id="stars-layer" class="stars-layer"></div>
+    </div>
+    <div class="horizon-line"></div><button id="back-from-capybara" class="back-btn">← Volver</button> <!-- Capybara izquierdo -->
+    <div class="capybara capybara-left">
+     <div class="capybara-body">
+      <div class="capybara-head">
+       <div class="capybara-eye"></div>
+       <div class="capybara-eye"></div>
+       <div class="capybara-mouth"></div>
+      </div>
+      <div class="capybara-back"></div>
+     </div>
+    </div><!-- Contenedor de corazones del lado izquierdo -->
+    <div id="hearts-left-container" class="hearts-container hearts-left"></div><!-- Contenedor de estrellas orbitando -->
+    <div id="stars-orbit-container" class="stars-orbit-container"></div><!-- Corazón gigante central -->
+    <div class="heart-giant-container">
+     <svg id="giant-heart" class="giant-heart" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,85 C25,70 10,55 10,40 C10,28 18,20 28,20 C35,20 42,25 50,35 C58,25 65,20 72,20 C82,20 90,28 90,40 C90,55 75,70 50,85 Z" fill="url(#heartGradient)" stroke="#ff006e" stroke-width="1" /> <defs>
+       <lineargradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#ff006e;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#fb5607;stop-opacity:1" />
+       </lineargradient>
+      </defs>
+     </svg>
+     <div id="heart-text" class="heart-text"></div>
+    </div><!-- Contenedor de corazones del lado derecho -->
+    <div id="hearts-right-container" class="hearts-container hearts-right"></div><!-- Capybara derecho -->
+    <div class="capybara capybara-right">
+     <div class="capybara-body">
+      <div class="capybara-head">
+       <div class="capybara-eye"></div>
+       <div class="capybara-eye"></div>
+       <div class="capybara-mouth"></div>
+      </div>
+      <div class="capybara-back"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      recipient_name: 'Juana Xiomara Mosqueira Cotrina',
+      intro_title: 'Esto es para ti',
+      button_text: 'Abre Esto',
+      primary_color: '#ff006e',
+      secondary_color: '#fb5607',
+      accent_color: '#ffbe0b',
+      text_color: '#ffffff',
+      font_family: 'Great Vibes'
+    };
 
+    let treeGrowing = false;
+    let capybarasActive = false;
+
+    const heartEmojis = ['💖', '💕', '💗', '💝', '❤️', '🩷'];
+
+    // Crear universo infinito de estrellas y corazones
+    function createUniverse() {
+      const starField = document.getElementById('star-field');
+      starField.innerHTML = '';
+
+      const starCount = 200;
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star twinkle';
+        
+        const size = Math.random() * 4 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        
+        const orbitClass = i % 3 === 0 ? 'orbit-slow' : i % 3 === 1 ? 'orbit-medium' : 'orbit-fast';
+        star.classList.add(orbitClass);
+        
+        const orbitRadius = 100 + (i % 20) * 30;
+        star.style.setProperty('--orbit-radius', orbitRadius + 'px');
+        
+        const x = 50 + Math.random() * 100;
+        const y = 50 + Math.random() * 100;
+        star.style.left = x + '%';
+        star.style.top = y + '%';
+        
+        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        starField.appendChild(star);
+      }
+
+      const heartCount = 100;
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-universe';
+        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        heart.style.left = x + '%';
+        heart.style.top = y + '%';
+        heart.style.animationDelay = Math.random() * 15 + 's';
+        heart.style.animationDuration = (10 + Math.random() * 10) + 's';
+        
+        starField.appendChild(heart);
+      }
+
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'light-particle';
+        particle.style.width = (Math.random() * 3 + 1) + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.background = Math.random() > 0.5 ? '#ffbe0b' : '#ff006e';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 25) + 's';
+        
+        starField.appendChild(particle);
+      }
+    }
+
+    // Crear cielo de estrellas billones en la pantalla de capybaras
+    function createUniverseSky() {
+      const starsLayer = document.getElementById('stars-layer');
+      starsLayer.innerHTML = '';
+      
+      const starCount = 600; // Billones de estrellas
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star-point';
+        
+        const size = Math.random() * 2 + 0.5;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        star.style.left = x + '%';
+        star.style.top = y + '%';
+        
+        // Alternancia entre twinkle y blink
+        const animationType = Math.random() > 0.6 ? 'blink' : 'twinkle';
+        star.classList.add(animationType);
+        
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (2 + Math.random() * 2) + 's';
+        
+        starsLayer.appendChild(star);
+      }
+    }
+
+    // Crear MUCHÍSIMOS corazones en fila vertical desde las capybaras
+    function createFlyingHearts() {
+      if (!capybarasActive) return;
+      
+      const leftContainer = document.getElementById('hearts-left-container');
+      const rightContainer = document.getElementById('hearts-right-container');
+      
+      for (let j = 0; j < 10; j++) {
+        const leftHeart = document.createElement('div');
+        leftHeart.className = 'flying-heart';
+        leftHeart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        leftHeart.style.animationDelay = j * 40 + 'ms';
+        leftContainer.appendChild(leftHeart);
+        setTimeout(() => leftHeart.remove(), 2500);
+        
+        const rightHeart = document.createElement('div');
+        rightHeart.className = 'flying-heart';
+        rightHeart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        rightHeart.style.animationDelay = j * 40 + 'ms';
+        rightContainer.appendChild(rightHeart);
+        setTimeout(() => rightHeart.remove(), 2500);
+      }
+    }
+
+    // Crear estrellas orbitando alrededor del corazón
+    function createOrbitingStars() {
+      const container = document.getElementById('stars-orbit-container');
+      container.innerHTML = '';
+      
+      const starCount = 80;
+      const radius = 220;
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'orbit-star';
+        
+        const angle = (i / starCount) * Math.PI * 2;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        const duration = 4 + Math.random() * 3;
+        const delay = i * 30;
+        
+        star.style.animation = `orbit-spin-${i} ${duration}s linear infinite`;
+        
+        const keyframes = `
+          @keyframes orbit-spin-${i} {
+            0% {
+              transform: translate(${x}px, ${y}px) scale(1);
+              opacity: 0;
+            }
+            10% {
+              opacity: 1;
+            }
+            90% {
+              opacity: 1;
+            }
+            100% {
+              transform: rotate(360deg) translate(${x}px, ${y}px) scale(1);
+              opacity: 0;
+            }
+          }
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = keyframes;
+        document.head.appendChild(style);
+        
+        star.style.animationDelay = delay + 'ms';
+        container.appendChild(star);
+      }
+      
+      container.classList.add('visible');
+    }
+
+    // Mostrar el corazón gigante y escribir el texto
+    function showHeartAndText() {
+      const giantHeart = document.getElementById('giant-heart');
+      const textElement = document.getElementById('heart-text');
+      
+      giantHeart.classList.add('visible');
+      createOrbitingStars();
+      
+      setTimeout(() => {
+        typewriteText();
+      }, 1500);
+    }
+
+    // Escribir el texto con efecto de máquina de escribir
+    function typewriteText() {
+      const fullText = `${window.elementSdk?.config?.recipient_name || defaultConfig.recipient_name}, tu amistad es ese tesoro que no se presume, pero se cuida con el corazón.`;
+      const textElement = document.getElementById('heart-text');
+      textElement.classList.add('visible');
+      textElement.innerHTML = '';
+      
+      let index = 0;
+      const speed = 40;
+      
+      function type() {
+        if (index < fullText.length) {
+          textElement.innerHTML = fullText.substring(0, index + 1) + '<span class="typing-cursor"></span>';
+          index++;
+          setTimeout(type, speed);
+        } else {
+          textElement.innerHTML = fullText;
+        }
+      }
+      
+      type();
+    }
+
+    // Crear árbol que crece
+    function createGrowingTree() {
+      if (treeGrowing) return;
+      treeGrowing = true;
+      
+      const wrapper = document.getElementById('tree-wrapper');
+      wrapper.innerHTML = '';
+      wrapper.style.transform = 'scale(1)';
+      
+      const trunk = document.createElement('div');
+      trunk.className = 'tree-trunk';
+      trunk.style.height = '0px';
+      wrapper.appendChild(trunk);
+      
+      setTimeout(() => {
+        const branches = [
+          { bottom: '200px', rotation: -35, width: '80px', delay: 0 },
+          { bottom: '200px', rotation: 35, width: '80px', delay: 0.1 },
+          { bottom: '170px', rotation: -50, width: '75px', delay: 0.2 },
+          { bottom: '170px', rotation: 50, width: '75px', delay: 0.3 },
+          { bottom: '140px', rotation: -60, width: '70px', delay: 0.4 },
+          { bottom: '140px', rotation: 60, width: '70px', delay: 0.5 },
+          { bottom: '110px', rotation: -45, width: '60px', delay: 0.6 },
+          { bottom: '110px', rotation: 45, width: '60px', delay: 0.7 },
+          { bottom: '80px', rotation: -70, width: '50px', delay: 0.8 },
+          { bottom: '80px', rotation: 70, width: '50px', delay: 0.9 },
+          { bottom: '50px', rotation: -55, width: '40px', delay: 1 },
+          { bottom: '50px', rotation: 55, width: '40px', delay: 1.1 },
+        ];
+
+        branches.forEach(b => {
+          const branch = document.createElement('div');
+          branch.className = 'branch';
+          branch.style.bottom = b.bottom;
+          branch.style.transform = `translateX(-50%) rotate(${b.rotation}deg)`;
+          branch.style.width = '0px';
+          branch.style.animationDelay = b.delay + 's';
+          branch.style.animationDuration = '1.2s';
+          
+          wrapper.appendChild(branch);
+
+          setTimeout(() => {
+            createFlowersOnBranch(wrapper, b, branch);
+          }, b.delay * 1000);
+        });
+      }, 2000);
+
+      growTreeToFillScreen(wrapper);
+    }
+
+    function growTreeToFillScreen(wrapper) {
+      let scale = 1;
+      let growthInterval = setInterval(() => {
+        scale += 0.02;
+        wrapper.style.transform = `scale(${scale})`;
+        
+        if (scale >= 3) {
+          clearInterval(growthInterval);
+        }
+      }, 100);
+    }
+
+    function createFlowersOnBranch(wrapper, branch, branchElement) {
+      const flowerCount = 8 + Math.floor(Math.random() * 5);
+      const flowers = ['🌹', '🌷', '🌸', '🌺', '💐', '🌻'];
+      
+      for (let i = 0; i < flowerCount; i++) {
+        setTimeout(() => {
+          const flower = document.createElement('div');
+          flower.className = 'flower';
+          
+          const offsetX = (Math.random() - 0.5) * 60;
+          const offsetY = -Math.random() * 40;
+          
+          const size = 20 + Math.random() * 15;
+          flower.style.width = size + 'px';
+          flower.style.height = size + 'px';
+          flower.style.fontSize = size + 'px';
+          
+          flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+          
+          flower.style.left = 'calc(50% + ' + offsetX + 'px)';
+          flower.style.bottom = 'calc(' + branch.bottom + ' + ' + offsetY + 'px)';
+          flower.style.animationDelay = Math.random() * 0.5 + 's';
+          
+          wrapper.appendChild(flower);
+        }, i * 150);
+      }
+    }
+
+    function applyConfig(config) {
+      const name = config.recipient_name || defaultConfig.recipient_name;
+      const parts = name.split(' ');
+      const shortName = parts.length > 1 ? parts[0] + ' ' + parts[1] : parts[0];
+      
+      document.getElementById('button-name').textContent = shortName;
+    }
+
+    function switchToTreeScreen() {
+      document.getElementById('universe-screen').classList.remove('visible');
+      document.getElementById('universe-screen').classList.add('hidden');
+      document.getElementById('tree-screen').classList.remove('hidden');
+      document.getElementById('tree-screen').classList.add('visible');
+      treeGrowing = false;
+    }
+
+    function switchToCapybaraScreen() {
+      document.getElementById('tree-screen').classList.remove('visible');
+      document.getElementById('tree-screen').classList.add('hidden');
+      document.getElementById('capybara-screen').classList.remove('hidden');
+      document.getElementById('capybara-screen').classList.add('visible');
+      
+      capybarasActive = true;
+      
+      // Crear cielo de estrellas
+      createUniverseSky();
+      
+      // Limpiar contenedores
+      document.getElementById('hearts-left-container').innerHTML = '';
+      document.getElementById('hearts-right-container').innerHTML = '';
+      document.getElementById('giant-heart').classList.remove('visible');
+      document.getElementById('heart-text').classList.remove('visible');
+      document.getElementById('heart-text').innerHTML = '';
+      document.getElementById('stars-orbit-container').classList.remove('visible');
+      
+      // Iniciar lluvia de corazones
+      let heartCount = 0;
+      let heartInterval = setInterval(() => {
+        if (!capybarasActive || heartCount > 70) {
+          clearInterval(heartInterval);
+          setTimeout(() => {
+            if (capybarasActive) {
+              showHeartAndText();
+            }
+          }, 500);
+          return;
+        }
+        createFlyingHearts();
+        heartCount++;
+      }, 80);
+    }
+
+    function backToTreeScreen() {
+      document.getElementById('capybara-screen').classList.remove('visible');
+      document.getElementById('capybara-screen').classList.add('hidden');
+      document.getElementById('tree-screen').classList.remove('hidden');
+      document.getElementById('tree-screen').classList.add('visible');
+      capybarasActive = false;
+    }
+
+    function backToUniverseScreen() {
+      document.getElementById('tree-screen').classList.remove('visible');
+      document.getElementById('tree-screen').classList.add('hidden');
+      document.getElementById('universe-screen').classList.remove('hidden');
+      document.getElementById('universe-screen').classList.add('visible');
+      treeGrowing = false;
+    }
+
+    // Initialize SDK
+    const element = {
+      defaultConfig: defaultConfig,
+      
+      onConfigChange: async (config) => {
+        applyConfig(config);
+      },
+      
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: undefined
+      }),
+      
+      mapToEditPanelValues: (config) => new Map([
+        ['recipient_name', config.recipient_name || defaultConfig.recipient_name],
+        ['intro_title', config.intro_title || defaultConfig.intro_title],
+        ['button_text', config.button_text || defaultConfig.button_text]
+      ])
+    };
+
+    if (window.elementSdk) {
+      window.elementSdk.init(element);
+    }
+
+    // Event listeners
+    document.getElementById('universe-btn').addEventListener('click', switchToTreeScreen);
+    document.getElementById('open-tree-btn').addEventListener('click', createGrowingTree);
+    document.getElementById('capybara-btn').addEventListener('click', switchToCapybaraScreen);
+    document.getElementById('back-from-tree').addEventListener('click', backToUniverseScreen);
+    document.getElementById('back-from-capybara').addEventListener('click', backToTreeScreen);
+
+    // Initialize
+    createUniverse();
+    applyConfig(defaultConfig);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce1e4f73083e9b6',t:'MTc3MTEyNzk4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
