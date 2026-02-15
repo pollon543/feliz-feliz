@@ -352,6 +352,60 @@
     .tree-open-btn:hover { transform: translateX(-50%) scale(1.05); }
     .tree-open-btn.hidden { opacity: 0; pointer-events: none; }
 
+    /* Ramo de flores (reemplaza árbol) — giro infinito + frase arriba */
+    .tree-bouquet-wrap {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 15;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease;
+    }
+
+    .tree-bouquet-wrap.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .tree-bouquet-phrase {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3.2vw, 1.45rem);
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      max-width: 85%;
+      margin: 0 0 1.5rem;
+      padding: 0 1rem;
+      line-height: 1.45;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .tree-bouquet-img-wrap {
+      width: min(280px, 75vw);
+      height: min(360px, 85vmin);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tree-bouquet-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      animation: bouquet-spin 20s linear infinite;
+      filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.4));
+      mix-blend-mode: multiply;
+    }
+
+    @keyframes bouquet-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .back-btn {
       position: absolute;
       top: 20px;
@@ -656,10 +710,7 @@
       border-radius: 50%;
       background: radial-gradient(circle, #ffeb3b, #ffd700);
       box-shadow: 0 0 10px rgba(255, 235, 59, 0.9);
-      top: 50%;
-      left: 50%;
-      margin-top: -4px;
-      margin-left: -4px;
+      transform: translate(-50%, -50%);
     }
 
     .capybara-next-btn {
@@ -1020,6 +1071,16 @@
         max-width: 320px;
       }
 
+      .tree-bouquet-phrase {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin-bottom: 1rem;
+      }
+
+      .tree-bouquet-img-wrap {
+        width: min(240px, 78vw);
+        height: min(300px, 80vmin);
+      }
+
       .tree-wrapper {
         width: 280px;
         height: 280px;
@@ -1083,8 +1144,6 @@
       .capybara-orbit-star {
         width: 6px;
         height: 6px;
-        margin-top: -3px;
-        margin-left: -3px;
       }
 
       .capybara-next-btn {
@@ -1206,6 +1265,12 @@
     <button type="button" class="back-btn" id="back-from-tree" aria-label="Volver">← Volver</button>
     <button type="button" class="tree-open-btn" id="tree-open-btn">Abre Esto 🌸</button>
     <div class="tree-container">
+      <div id="tree-bouquet-wrap" class="tree-bouquet-wrap">
+        <p class="tree-bouquet-phrase">Eres esa amistad que no se mide en tiempo, sino en momentos inolvidables.</p>
+        <div class="tree-bouquet-img-wrap">
+          <img src="img/ramo.png" alt="Ramo de flores" class="tree-bouquet-img" id="tree-bouquet-img">
+        </div>
+      </div>
       <div class="tree-wrapper" id="tree-wrapper">
         <div class="tree-trunk" id="tree-trunk"></div>
       </div>
@@ -1313,7 +1378,7 @@
       <div class="closing-box">
         <span class="big-heart" aria-hidden="true">💖</span>
         <h2>Feliz San Valentín</h2>
-        <p>Con cariño, para una amiga que ilumina cada día.</p>
+        <p>Con cariño, por una amistad que ilumina cada día.</p>
       </div>
     </footer>
   </div>
@@ -1438,27 +1503,39 @@
         ];
 
         setTimeout(function() {
+          var trunkH = trunk.offsetHeight || 160;
+          var scaleTree = trunkH / 160;
           branchConfig.forEach(function(b, i) {
+            var bottom = Math.round(b.bottom * scaleTree);
+            var width = Math.round(b.width * scaleTree);
             var branch = document.createElement('div');
             branch.className = 'branch';
-            branch.style.bottom = b.bottom + 'px';
+            branch.style.bottom = bottom + 'px';
             branch.style.transform = 'translateX(-50%) rotate(' + b.rotation + 'deg)';
             branch.style.width = '0';
             branch.style.animationDelay = (i * 0.08) + 's';
             wrapper.appendChild(branch);
             requestAnimationFrame(function() {
               branch.classList.add('grown');
-              branch.style.width = b.width + 'px';
+              branch.style.width = width + 'px';
             });
+            b._bottom = bottom;
+            b._width = width;
           });
         }, 2100);
 
         // Flores en los extremos de las ramas
         setTimeout(function() {
+          var trunkH = trunk.offsetHeight || 160;
+          var scaleTree = trunkH / 160;
+          var wrapW = wrapper.offsetWidth || 320;
+          var wrapH = wrapper.offsetHeight || 320;
           branchConfig.forEach(function(b, i) {
+            var bottom = b._bottom != null ? b._bottom : Math.round(b.bottom * scaleTree);
+            var width = b._width != null ? b._width : Math.round(b.width * scaleTree);
             var rad = (b.rotation * Math.PI) / 180;
-            var endX = 50 + (Math.cos(rad) * b.width * 0.95) / 320 * 100;
-            var endY = 100 - (b.bottom / 320 * 100) - (Math.sin(rad) * b.width * 0.95) / 320 * 100;
+            var endX = 50 + (Math.cos(rad) * width * 0.95) / wrapW * 100;
+            var endY = 100 - (bottom / wrapH * 100) - (Math.sin(rad) * width * 0.95) / wrapH * 100;
             var flower = document.createElement('div');
             flower.className = 'tree-flower';
             flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
@@ -1476,7 +1553,9 @@
 
         // Escalar árbol hasta llenar pantalla
         setTimeout(function() {
-          var scale = Math.max(window.innerWidth / 320, window.innerHeight / 320) * 1.1;
+          var w = wrapper.offsetWidth || 320;
+          var h = wrapper.offsetHeight || 320;
+          var scale = Math.max(window.innerWidth / w, window.innerHeight / h) * 1.1;
           wrapper.style.transition = 'transform 2.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
           wrapper.style.transform = 'scale(' + scale + ')';
         }, 4200);
@@ -1497,7 +1576,13 @@
 
       document.getElementById('tree-open-btn').addEventListener('click', function() {
         this.classList.add('hidden');
-        createGrowingTree();
+        document.getElementById('tree-wrapper').style.display = 'none';
+        var bouquetWrap = document.getElementById('tree-bouquet-wrap');
+        bouquetWrap.classList.add('visible');
+        setTimeout(function() {
+          var btn = document.getElementById('tree-next-btn');
+          if (btn) btn.classList.add('visible');
+        }, 800);
       });
 
       document.getElementById('back-from-tree').addEventListener('click', function() {
@@ -1505,6 +1590,14 @@
         document.getElementById('tree-screen').classList.add('hidden');
         document.getElementById('universe-screen').classList.remove('hidden');
         document.getElementById('universe-screen').classList.add('visible');
+        var treeOpen = document.getElementById('tree-open-btn');
+        var treeWrap = document.getElementById('tree-wrapper');
+        var bouquetWrap = document.getElementById('tree-bouquet-wrap');
+        var treeNext = document.getElementById('tree-next-btn');
+        if (treeOpen) treeOpen.classList.remove('hidden');
+        if (treeWrap) treeWrap.style.display = '';
+        if (bouquetWrap) bouquetWrap.classList.remove('visible');
+        if (treeNext) treeNext.classList.remove('visible');
       });
 
       document.getElementById('tree-next-btn').addEventListener('click', function() {
