@@ -36,13 +36,289 @@
 
     .font-elegant { font-family: 'Cormorant Garamond', serif; }
 
-    /* ========== PARTÍCULAS DE FONDO ========== */
+    /* ========== PANTALLAS (UNIVERSO / ÁRBOL) ========== */
+    .screen {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      transition: opacity 1s ease;
+      overflow: hidden;
+    }
+
+    .screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .screen.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ========== PANTALLA 1: UNIVERSO INFINITO ========== */
+    .universe-bg {
+      background: radial-gradient(ellipse 120% 120% at 50% 50%, #0f0a1a 0%, #1a0a2e 30%, #16213e 55%, #0a0a1a 100%);
+    }
+
+    .star-field {
+      position: absolute;
+      inset: 0;
+    }
+
+    .orbit-ring {
+      transform-origin: center center;
+    }
+
+    .orbit-ring .star {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: 0;
+      margin-top: 0;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff 0%, #ffd700 40%, #ffaa00 100%);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .star.twinkle {
+      animation: star-twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes star-twinkle {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    .star.orbit {
+      animation: orbit 60s linear infinite;
+    }
+
+    .star.orbit-slow { animation-duration: 80s; }
+    .star.orbit-medium { animation-duration: 50s; }
+    .star.orbit-fast { animation-duration: 30s; }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .heart-universe {
+      position: absolute;
+      font-size: 1.4rem;
+      animation: heart-float-universe 12s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8));
+    }
+
+    @keyframes heart-float-universe {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      25% { transform: translate(40px, -40px) scale(1.2); opacity: 0.9; }
+      50% { transform: translate(-30px, 30px) scale(0.85); opacity: 0.5; }
+      75% { transform: translate(50px, 20px) scale(1.1); opacity: 0.8; }
+    }
+
+    .light-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 8px rgba(255, 235, 200, 0.8);
+      animation: light-dot-float 25s ease-in-out infinite;
+    }
+
+    @keyframes light-dot-float {
+      0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+      50% { transform: translate(-60px, -40px); opacity: 0.8; }
+    }
+
+    .universe-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      text-align: center;
+    }
+
+    .center-button {
+      width: min(280px, 75vw);
+      height: min(280px, 75vw);
+      border-radius: 50%;
+      border: 3px solid rgba(255, 190, 100, 0.9);
+      background: linear-gradient(135deg, #c45c7a 0%, #8b3a5c 50%, #6b2d4a 100%);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px;
+      box-shadow: 0 0 50px rgba(255, 105, 180, 0.5), 0 0 100px rgba(139, 58, 92, 0.3), inset 0 0 40px rgba(255,255,255,0.15);
+      animation: center-button-pulse 2.5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .center-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 70px rgba(255, 105, 180, 0.7), 0 0 120px rgba(139, 58, 92, 0.5);
+    }
+
+    .center-button:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes center-button-pulse {
+      0%, 100% { box-shadow: 0 0 50px rgba(255, 105, 180, 0.5), 0 0 100px rgba(139, 58, 92, 0.3), inset 0 0 40px rgba(255,255,255,0.15); }
+      50% { box-shadow: 0 0 70px rgba(255, 105, 180, 0.8), 0 0 130px rgba(139, 58, 92, 0.5), inset 0 0 50px rgba(255,255,255,0.25); }
+    }
+
+    .center-button .btn-title {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.2;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .center-button .btn-emoji {
+      font-size: 2rem;
+    }
+
+    .center-button .btn-name {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      opacity: 0.95;
+      font-style: italic;
+    }
+
+    /* ========== PANTALLA 2: ÁRBOL QUE CRECE ========== */
+    .tree-bg {
+      background: linear-gradient(160deg, #0f0a1a 0%, #1a0033 40%, #2d0a4e 70%, #1a0a2e 100%);
+    }
+
+    .tree-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tree-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      transform-origin: center center;
+    }
+
+    .tree-trunk {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 0;
+      background: linear-gradient(180deg, #a0826d 0%, #6b5344 100%);
+      border-radius: 14px;
+      transform-origin: bottom center;
+      box-shadow: 0 0 20px rgba(101, 67, 33, 0.5);
+    }
+
+    .tree-trunk.grown {
+      height: 160px;
+      transition: height 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .branch {
+      position: absolute;
+      left: 50%;
+      bottom: 160px;
+      height: 10px;
+      width: 0;
+      background: linear-gradient(90deg, #6b5344, #8b7355);
+      border-radius: 5px;
+      transform-origin: left center;
+      box-shadow: 0 0 12px rgba(101, 67, 33, 0.4);
+    }
+
+    .branch.grown {
+      transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tree-flower {
+      position: absolute;
+      font-size: 22px;
+      opacity: 0;
+      transform: scale(0);
+      pointer-events: none;
+    }
+
+    .tree-flower.bloom {
+      animation: flower-bloom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes flower-bloom {
+      0% { transform: scale(0); opacity: 0; }
+      70% { transform: scale(1.25); opacity: 0.95; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .tree-next-btn {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 16px 36px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 190, 100, 0.9);
+      background: linear-gradient(135deg, #c45c7a, #8b3a5c);
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 40px rgba(139, 58, 92, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .tree-next-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      animation: fade-up 0.6s ease forwards;
+    }
+
+    .tree-next-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 12px 50px rgba(139, 58, 92, 0.6);
+    }
+
+    /* ========== CONTENIDO PRINCIPAL (tras pantallas) ========== */
+    .main-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+    }
+
+    .main-content.hidden {
+      display: none;
+    }
+
+    /* ========== PARTÍCULAS DE FONDO (solo en main) ========== */
     .particles-bg {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
+    }
+
+    .main-content .particles-bg {
+      z-index: 0;
     }
 
     .particle {
@@ -72,89 +348,6 @@
       0%, 100% { transform: translate(0, 0) rotate(0deg); }
       33% { transform: translate(20px, -30px) rotate(10deg); }
       66% { transform: translate(-15px, 20px) rotate(-5deg); }
-    }
-
-    /* ========== HERO ========== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
-      background: linear-gradient(160deg, #fdf8f5 0%, #f5e0e6 40%, #ead4e0 100%);
-      will-change: transform;
-      transition: transform 0.1s ease-out;
-    }
-
-    .hero-badge {
-      font-size: 0.85rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--rose-deep);
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fade-up 0.8s ease 0.2s forwards;
-      font-weight: 500;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 600;
-      color: var(--dark);
-      margin: 0 0 0.5rem;
-      line-height: 1.15;
-      opacity: 0;
-      animation: fade-up 0.9s ease 0.4s forwards;
-    }
-
-    .hero h1 .name {
-      background: linear-gradient(135deg, var(--rose-deep), var(--rose-soft));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero .tagline {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--rose-soft);
-      font-weight: 300;
-      max-width: 420px;
-      margin: 0 0 2.5rem;
-      opacity: 0;
-      animation: fade-up 0.9s ease 0.6s forwards;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--rose-deep), var(--rose-soft));
-      color: white;
-      border: none;
-      border-radius: 999px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      box-shadow: 0 10px 40px var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      animation: fade-up 0.9s ease 0.8s forwards;
-    }
-
-    .hero-cta:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(139, 58, 92, 0.3);
-    }
-
-    .hero-cta:active {
-      transform: translateY(-2px);
     }
 
     @keyframes fade-up {
@@ -413,18 +606,33 @@
   </style>
 </head>
 <body>
-  <div class="particles-bg" id="particles-bg"></div>
+  <!-- Pantalla 1: Universo infinito -->
+  <div id="universe-screen" class="screen visible universe-bg">
+    <div class="star-field" id="star-field"></div>
+    <div class="universe-center">
+      <button type="button" class="center-button" id="universe-btn" aria-label="Esto es para ti">
+        <span class="btn-title">Esto es para ti</span>
+        <span class="btn-emoji">💖</span>
+        <span class="btn-name" id="universe-btn-name">Juana Xiomara</span>
+      </button>
+    </div>
+  </div>
 
-  <header class="hero" id="hero">
-    <span class="hero-badge">San Valentín 2025</span>
-    <h1>Para <span class="name">Juana Xiomara</span><br>Mosqueira Cotrina</h1>
-    <p class="tagline">Un pequeño rincón para decirte cuánto vale tu amistad.</p>
-    <button type="button" class="hero-cta" id="scroll-to-phrases" aria-label="Ver mensajes">
-      Ver mensajes 💖
-    </button>
-  </header>
+  <!-- Pantalla 2: Árbol que crece -->
+  <div id="tree-screen" class="screen hidden tree-bg">
+    <div class="tree-container">
+      <div class="tree-wrapper" id="tree-wrapper">
+        <div class="tree-trunk" id="tree-trunk"></div>
+      </div>
+    </div>
+    <button type="button" class="tree-next-btn" id="tree-next-btn">Ver mensajes 💖</button>
+  </div>
 
-  <section class="phrases-section reveal" id="phrases-section">
+  <!-- Contenido principal: frases + cierre -->
+  <div id="main-content" class="main-content hidden">
+    <div class="particles-bg" id="particles-bg"></div>
+
+    <section class="phrases-section reveal visible" id="phrases-section">
     <h2 class="section-title">Palabras que salen del corazón</h2>
     <div class="phrases-grid">
       <article class="phrase-card">
@@ -470,27 +678,211 @@
     </div>
   </section>
 
-  <footer class="closing reveal" id="closing">
-    <div class="closing-box">
-      <span class="big-heart" aria-hidden="true">💖</span>
-      <h2>Feliz San Valentín</h2>
-      <p>Con cariño, para una amiga que ilumina cada día.</p>
-    </div>
-  </footer>
+    <footer class="closing reveal" id="closing">
+      <div class="closing-box">
+        <span class="big-heart" aria-hidden="true">💖</span>
+        <h2>Feliz San Valentín</h2>
+        <p>Con cariño, para una amiga que ilumina cada día.</p>
+      </div>
+    </footer>
+  </div>
 
   <div class="heart-burst" id="heart-burst" aria-hidden="true"></div>
 
   <script>
     (function() {
       const heartEmojis = ['💖', '💕', '💗', '💝', '❤️', '🩷'];
+      const flowers = ['🌹', '🌷', '🌸', '🌺', '💐', '🌻'];
 
-      // Crear partículas y corazones flotantes
+      // ---------- UNIVERSO: estrellas en órbita, corazones, partículas ----------
+      function createUniverse() {
+        const field = document.getElementById('star-field');
+        if (!field) return;
+        field.innerHTML = '';
+
+        // Órbitas de estrellas (círculos giratorios)
+        const orbits = [
+          { radius: 90, count: 8, speed: 80, class: 'orbit-slow' },
+          { radius: 140, count: 12, speed: 55, class: 'orbit-slow' },
+          { radius: 200, count: 16, speed: 45, class: 'orbit-medium' },
+          { radius: 280, count: 20, speed: 35, class: 'orbit-medium' },
+          { radius: 380, count: 24, speed: 28, class: 'orbit-fast' }
+        ];
+
+        orbits.forEach(function(orb) {
+          var ring = document.createElement('div');
+          ring.className = 'orbit-ring';
+          ring.style.position = 'absolute';
+          ring.style.left = '50%';
+          ring.style.top = '50%';
+          ring.style.width = '0';
+          ring.style.height = '0';
+          ring.style.transform = 'translate(-50%, -50%)';
+          ring.style.animation = 'orbit ' + orb.speed + 's linear infinite';
+          for (var s = 0; s < orb.count; s++) {
+            var angle = (s / orb.count) * Math.PI * 2;
+            var x = Math.cos(angle) * orb.radius;
+            var y = Math.sin(angle) * orb.radius;
+            var star = document.createElement('div');
+            star.className = 'star twinkle ' + orb.class;
+            star.style.width = (3 + Math.random() * 3) + 'px';
+            star.style.height = star.style.width;
+            star.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            ring.appendChild(star);
+          }
+          field.appendChild(ring);
+        });
+
+        // Estrellas fijas titilantes
+        for (var i = 0; i < 120; i++) {
+          var star = document.createElement('div');
+          star.className = 'star twinkle';
+          star.style.width = (1 + Math.random() * 2.5) + 'px';
+          star.style.height = star.style.width;
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 4 + 's';
+          field.appendChild(star);
+        }
+
+        // Corazones flotantes
+        for (var i = 0; i < 35; i++) {
+          var h = document.createElement('div');
+          h.className = 'heart-universe';
+          h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+          h.style.left = Math.random() * 100 + '%';
+          h.style.top = Math.random() * 100 + '%';
+          h.style.animationDelay = Math.random() * 12 + 's';
+          h.style.animationDuration = (8 + Math.random() * 8) + 's';
+          field.appendChild(h);
+        }
+
+        // Puntos de luz
+        for (var i = 0; i < 40; i++) {
+          var dot = document.createElement('div');
+          dot.className = 'light-dot';
+          dot.style.width = (2 + Math.random() * 4) + 'px';
+          dot.style.height = dot.style.width;
+          dot.style.left = Math.random() * 100 + '%';
+          dot.style.top = Math.random() * 100 + '%';
+          dot.style.animationDelay = Math.random() * 25 + 's';
+          field.appendChild(dot);
+        }
+      }
+
+      // ---------- ÁRBOL: tronco, ramas, flores, escalar ----------
+      var treeStarted = false;
+      function createGrowingTree() {
+        if (treeStarted) return;
+        treeStarted = true;
+
+        var wrapper = document.getElementById('tree-wrapper');
+        var trunkEl = document.getElementById('tree-trunk');
+        if (!wrapper || !trunkEl) return;
+
+        wrapper.innerHTML = '';
+        var trunk = document.createElement('div');
+        trunk.className = 'tree-trunk';
+        trunk.id = 'tree-trunk';
+        wrapper.appendChild(trunk);
+
+        requestAnimationFrame(function() {
+          trunk.classList.add('grown');
+        });
+
+        var branchConfig = [
+          { bottom: 160, rotation: -38, width: 75 },
+          { bottom: 160, rotation: 38, width: 75 },
+          { bottom: 130, rotation: -55, width: 65 },
+          { bottom: 130, rotation: 55, width: 65 },
+          { bottom: 100, rotation: -65, width: 58 },
+          { bottom: 100, rotation: 65, width: 58 },
+          { bottom: 72, rotation: -48, width: 50 },
+          { bottom: 72, rotation: 48, width: 50 },
+          { bottom: 48, rotation: -72, width: 42 },
+          { bottom: 48, rotation: 72, width: 42 },
+          { bottom: 28, rotation: -58, width: 35 },
+          { bottom: 28, rotation: 58, width: 35 }
+        ];
+
+        setTimeout(function() {
+          branchConfig.forEach(function(b, i) {
+            var branch = document.createElement('div');
+            branch.className = 'branch';
+            branch.style.bottom = b.bottom + 'px';
+            branch.style.transform = 'translateX(-50%) rotate(' + b.rotation + 'deg)';
+            branch.style.width = '0';
+            branch.style.animationDelay = (i * 0.08) + 's';
+            wrapper.appendChild(branch);
+            requestAnimationFrame(function() {
+              branch.classList.add('grown');
+              branch.style.width = b.width + 'px';
+            });
+          });
+        }, 2100);
+
+        // Flores en los extremos de las ramas
+        setTimeout(function() {
+          branchConfig.forEach(function(b, i) {
+            var rad = (b.rotation * Math.PI) / 180;
+            var endX = 50 + (Math.cos(rad) * b.width * 0.95) / 320 * 100;
+            var endY = 100 - (b.bottom / 320 * 100) - (Math.sin(rad) * b.width * 0.95) / 320 * 100;
+            var flower = document.createElement('div');
+            flower.className = 'tree-flower';
+            flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = endX + '%';
+            flower.style.top = endY + '%';
+            flower.style.marginLeft = '-11px';
+            flower.style.marginTop = '-11px';
+            flower.style.animationDelay = (i * 0.06) + 's';
+            wrapper.appendChild(flower);
+            requestAnimationFrame(function() {
+              flower.classList.add('bloom');
+            });
+          });
+        }, 3400);
+
+        // Escalar árbol hasta llenar pantalla
+        setTimeout(function() {
+          var scale = Math.max(window.innerWidth / 320, window.innerHeight / 320) * 1.1;
+          wrapper.style.transition = 'transform 2.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          wrapper.style.transform = 'scale(' + scale + ')';
+        }, 4200);
+
+        setTimeout(function() {
+          var btn = document.getElementById('tree-next-btn');
+          if (btn) btn.classList.add('visible');
+        }, 6200);
+      }
+
+      // ---------- Navegación entre pantallas ----------
+      document.getElementById('universe-btn').addEventListener('click', function() {
+        document.getElementById('universe-screen').classList.remove('visible');
+        document.getElementById('universe-screen').classList.add('hidden');
+        document.getElementById('tree-screen').classList.remove('hidden');
+        document.getElementById('tree-screen').classList.add('visible');
+        createGrowingTree();
+      });
+
+      document.getElementById('tree-next-btn').addEventListener('click', function() {
+        document.getElementById('tree-screen').classList.remove('visible');
+        document.getElementById('tree-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        createParticles();
+        initReveal();
+        window.scrollTo(0, 0);
+      });
+
+      // ---------- Main content: partículas y reveal ----------
       function createParticles() {
-        const container = document.getElementById('particles-bg');
-        for (let i = 0; i < 25; i++) {
-          const p = document.createElement('div');
+        var container = document.getElementById('particles-bg');
+        if (!container) return;
+        container.innerHTML = '';
+        for (var i = 0; i < 25; i++) {
+          var p = document.createElement('div');
           p.className = 'particle';
-          const size = 60 + Math.random() * 120;
+          var size = 60 + Math.random() * 120;
           p.style.width = size + 'px';
           p.style.height = size + 'px';
           p.style.left = Math.random() * 100 + '%';
@@ -499,8 +891,8 @@
           p.style.animationDuration = (15 + Math.random() * 15) + 's';
           container.appendChild(p);
         }
-        for (let i = 0; i < 18; i++) {
-          const h = document.createElement('div');
+        for (var i = 0; i < 18; i++) {
+          var h = document.createElement('div');
           h.className = 'heart-float';
           h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
           h.style.left = Math.random() * 100 + '%';
@@ -511,38 +903,26 @@
         }
       }
 
-      // Scroll reveal
       function initReveal() {
-        const sections = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              if (entry.target.id === 'phrases-section') {
-                entry.target.classList.add('visible');
-              }
-            }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-        sections.forEach(function(s) { observer.observe(s); });
+        var sections = document.querySelectorAll('#main-content .reveal');
+        sections.forEach(function(el) {
+          el.classList.add('visible');
+        });
+        var grid = document.getElementById('phrases-section');
+        if (grid) grid.classList.add('visible');
       }
 
-      // Botón scroll suave
-      document.getElementById('scroll-to-phrases').addEventListener('click', function() {
-        document.getElementById('phrases-section').scrollIntoView({ behavior: 'smooth' });
-      });
-
-      // Burst de corazones al hacer clic en el hero o en el CTA
+      // Burst de corazones (en botón universo)
       function createHeartBurst(x, y) {
-        const container = document.getElementById('heart-burst');
+        var container = document.getElementById('heart-burst');
+        if (!container) return;
         container.innerHTML = '';
-        const count = 12;
-        for (let i = 0; i < count; i++) {
-          const angle = (i / count) * Math.PI * 2 + Math.random() * 0.5;
-          const dist = 80 + Math.random() * 100;
-          const tx = Math.cos(angle) * dist;
-          const ty = Math.sin(angle) * dist;
-          const span = document.createElement('span');
+        for (var i = 0; i < 12; i++) {
+          var angle = (i / 12) * Math.PI * 2 + Math.random() * 0.5;
+          var dist = 80 + Math.random() * 100;
+          var tx = Math.cos(angle) * dist;
+          var ty = Math.sin(angle) * dist;
+          var span = document.createElement('span');
           span.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
           span.style.left = x + 'px';
           span.style.top = y + 'px';
@@ -553,34 +933,11 @@
         setTimeout(function() { container.innerHTML = ''; }, 1300);
       }
 
-      document.getElementById('hero').addEventListener('click', function(e) {
-        if (e.target.closest('.hero-cta')) return;
+      document.getElementById('universe-btn').addEventListener('click', function(e) {
         createHeartBurst(e.clientX, e.clientY);
       });
 
-      document.getElementById('scroll-to-phrases').addEventListener('click', function(e) {
-        createHeartBurst(e.clientX, e.clientY);
-      });
-
-      // Hover en cards: ligero brillo
-      document.querySelectorAll('.phrase-card').forEach(function(card) {
-        card.addEventListener('mouseenter', function() {
-          this.style.setProperty('--glow', '1');
-        });
-      });
-
-      // Parallax suave en hero
-      var hero = document.getElementById('hero');
-      window.addEventListener('scroll', function() {
-        var scrolled = window.scrollY;
-        var rate = scrolled * 0.12;
-        if (hero && scrolled < window.innerHeight) {
-          hero.style.transform = 'translateY(' + Math.min(rate, 80) + 'px)';
-        }
-      }, { passive: true });
-
-      createParticles();
-      initReveal();
+      createUniverse();
     })();
   </script>
 </body>
