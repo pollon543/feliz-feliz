@@ -253,6 +253,26 @@
         universeBtn.addEventListener('touchend', handleUniverseButton, { passive: false });
       }
 
+      function goToTreeScreen() {
+        document.getElementById('universe-screen').classList.remove('visible');
+        document.getElementById('universe-screen').classList.add('hidden');
+        document.getElementById('tree-screen').classList.remove('hidden');
+        document.getElementById('tree-screen').classList.add('visible');
+        createTreeStarsHearts();
+      }
+
+      var verBtn = document.getElementById('universe-ver-btn');
+      if (verBtn) {
+        verBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          goToTreeScreen();
+        });
+        verBtn.addEventListener('touchend', function(e) {
+          e.preventDefault();
+          goToTreeScreen();
+        }, { passive: false });
+      }
+
       document.getElementById('tree-open-btn').addEventListener('click', function() {
         this.classList.add('hidden');
         document.getElementById('tree-wrapper').style.display = 'none';
