@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Una constelación dedicada con cariño." />
+  <title>Angela Ruth — Un espacio entre estrellas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="nebula nebula--1" aria-hidden="true"></div>
+  <div class="nebula nebula--2" aria-hidden="true"></div>
+  <div class="nebula nebula--3" aria-hidden="true"></div>
+  <div id="pehttp://127.0.0.1:3000/feliz-feliz/index.html?serverWindowId=22b57f5b-4b28-40e2-9e66-b76afb7914dbtals-container" aria-hidden="true"></div>
+
+  <div id="cinematic-welcome" class="cinematic" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+    <div class="cinematic__vignette"></div>
+    <div class="cinematic__content">
+      <p class="cinematic__hint">Una pequeña pausa en el universo</p>
+      <h1 id="welcome-title" class="cinematic__title">Angela Ruth</h1>
+      <p class="cinematic__subtitle">Hurtado Montenegro</p>
+      <p class="cinematic__tag">Donde la luz se detiene un instante para admirar lo hermoso</p>
+      <button type="button" class="cinematic__cta glass-btn" id="enter-experience">
+        <span>Comenzar el recorrido</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <header class="site-header glass-panel" id="site-header" hidden>
+    <span class="site-header__brand">A.R.H.M.</span>
+    <nav class="site-header__nav" aria-label="Secciones">
+      <a href="#presentacion">Presentación</a>
+      <a href="#constelacion">Constelación</a>
+      <a href="#dialogos">Diálogos</a>
+      <a href="#jardines">Jardines</a>
+      <a href="#cierre">Cierre</a>
+    </nav>
+  </header>
+
+  <main id="main-content" class="main" hidden>
+    <section class="hero" id="presentacion">
+      <div class="hero__flowers" aria-hidden="true"></div>
+      <div class="hero__glow"></div>
+      <div class="hero__inner" data-aos="fade-up" data-aos-duration="1200">
+        <p class="eyebrow">Presentación especial</p>
+        <h2 class="hero__title">Hay personas que no necesitan discursos largos</h2>
+        <p class="hero__lead">Basta con cruzarse su camino para entender que el mundo, a veces, guarda detalles perfectos: una risa a tiempo, una idea clara, una calma que contagia.</p>
+        <p class="hero__name">Angela Ruth Hurtado Montenegro</p>
+        <p class="hero__note">Esto es un homenaje silencioso a esa mezcla rara de fuerza y dulzura que hace más bonito el día de quienes la rodean.</p>
+      </div>
+      <div class="hero__gifts" aria-hidden="true">
+        <button type="button" class="gift gift--1" data-secret="secret-1" aria-label="Regalo decorativo, tocar para sorpresa"></button>
+        <button type="button" class="gift gift--2" data-secret="secret-2" aria-label="Regalo decorativo, tocar para sorpresa"></button>
+        <button type="button" class="gift gift--3" data-secret="secret-3" aria-label="Regalo decorativo, tocar para sorpresa"></button>
+      </div>
+    </section>
+
+    <section class="slideshow-section" id="constelacion">
+      <div class="section-head" data-aos="fade-up">
+        <p class="eyebrow">Frases que quedan</p>
+        <h2 class="section-title">Como estrellas que no se apagan</h2>
+      </div>
+      <div class="swiper phrase-swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="phrase-card glass-card">
+              <blockquote>“La elegancia no grita: se nota en los detalles.”</blockquote>
+              <p class="phrase-card__meta">— Para quien lleva el buen gusto en el gesto</p>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="phrase-card glass-card">
+              <blockquote>“Una sonrisa honesta vale más que mil planes perfectos.”</blockquote>
+              <p class="phrase-card__meta">— Pequeño recordatorio cósmico</p>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="phrase-card glass-card">
+              <blockquote>“Quien ilumina sin esfuerzo deja huella sin ruido.”</blockquote>
+              <p class="phrase-card__meta">— Admiración en voz baja</p>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="phrase-card glass-card">
+              <blockquote>“El humor sano es magia: convierte un martes en historia.”</blockquote>
+              <p class="phrase-card__meta">— Chiste de universo aprobado</p>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-pagination phrase-swiper__pagination"></div>
+        <div class="swiper-button-prev phrase-swiper__nav"></div>
+        <div class="swiper-button-next phrase-swiper__nav"></div>
+      </div>
+    </section>
+
+    <section class="qualities" id="cualidades">
+      <div class="section-head" data-aos="fade-up">
+        <p class="eyebrow">Tarjetas de luz</p>
+        <h2 class="section-title">Cualidades que inspiran cariño y respeto</h2>
+      </div>
+      <div class="qualities__grid">
+        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="0">
+          <div class="quality-card__icon" aria-hidden="true">✦</div>
+          <h3>Claridad</h3>
+          <p>Piensa con orden y eso tranquiliza a quien escucha.</p>
+        </article>
+        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="80">
+          <div class="quality-card__icon" aria-hidden="true">❋</div>
+          <h3>Calidez</h3>
+          <p>La amabilidad que no presume, pero se siente.</p>
+        </article>
+        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="160">
+          <div class="quality-card__icon" aria-hidden="true">✧</div>
+          <h3>Autenticidad</h3>
+          <p>Ser uno mismo sin dramatizar: un arte poco común.</p>
+        </article>
+        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="240">
+          <div class="quality-card__icon" aria-hidden="true">✿</div>
+          <h3>Resiliencia suave</h3>
+          <p>Se levanta con gracia, aunque el día pese.</p>
+        </article>
+        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="320">
+          <div class="quality-card__icon" aria-hidden="true">☆</div>
+          <h3>Brillo natural</h3>
+          <p>No necesita focos: ya trae los suyos.</p>
+        </article>
+        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="400">
+          <div class="quality-card__icon" aria-hidden="true">◇</div>
+          <h3>Sentido del humor</h3>
+          <p>El tipo que salva reuniones y arregla el ánimo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="interactive" id="dialogos">
+      <div class="section-head" data-aos="fade-up">
+        <p class="eyebrow">Diálogos juguetones</p>
+        <h2 class="section-title">Preguntas con respuestas que animan</h2>
+        <p class="section-lead">Sin trampa, sin presión: solo curiosidad y una sonrisa de fondo.</p>
+      </div>
+
+      <div class="quiz-block glass-panel" data-aos="fade-up">
+        <h3 class="quiz-block__q">Si el día fuera una bebida, ¿cuál sería el tuyo hoy?</h3>
+        <div class="option-cards" role="group" aria-label="Opciones">
+          <button type="button" class="option-card" data-reply="reply-a">Café que despierta galaxias</button>
+          <button type="button" class="option-card" data-reply="reply-b">Té calmante con buena conversación</button>
+          <button type="button" class="option-card" data-reply="reply-c">Jugo de fruta con playlist feliz</button>
+        </div>
+        <div class="quiz-reply" id="quiz-reply-1" hidden></div>
+      </div>
+
+      <div class="quiz-block glass-panel" data-aos="fade-up" data-aos-delay="50">
+        <h3 class="quiz-block__q">¿Cuánta luz merece tu semana? (desliza con honestidad cósmica)</h3>
+        <label class="slider-wrap">
+          <span class="slider-wrap__label">Suave</span>
+          <input type="range" class="cosmic-slider" id="light-slider" min="0" max="100" value="72" />
+          <span class="slider-wrap__label">Radiante</span>
+        </label>
+        <p class="slider-output glass-inline" id="slider-output">Tu semana: 72% de constelación aprobada por el universo.</p>
+      </div>
+
+      <div class="quiz-block glass-panel" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="quiz-block__q">Chiste ligero: ¿por qué las estrellas no usan redes sociales?</h3>
+        <div class="option-cards">
+          <button type="button" class="option-card joke-btn" data-joke="a">Porque ya tienen muchos seguidores en el cielo</button>
+          <button type="button" class="option-card joke-btn" data-joke="b">Porque el WiFi del espacio es lento</button>
+        </div>
+        <p class="joke-punchline" id="joke-punchline" hidden></p>
+      </div>
+    </section>
+
+    <section class="playground" id="jardines">
+      <div class="section-head" data-aos="fade-up">
+        <p class="eyebrow">Jardines y cielo</p>
+        <h2 class="section-title">Mini interacciones para el alma curiosa</h2>
+      </div>
+      <div class="playground__grid">
+        <div class="play-card glass-panel" data-aos="zoom-in">
+          <h3>Atrapa pétalos</h3>
+          <p>Haz clic en los pétalos que caen. Cada uno susurra algo bonito.</p>
+          <div class="petal-game" id="petal-game" aria-label="Zona de juego de pétalos"></div>
+          <p class="petal-game__msg" id="petal-msg" aria-live="polite"></p>
+        </div>
+        <div class="play-card glass-panel" data-aos="zoom-in" data-aos-delay="80">
+          <h3>Cuenta estrellas</h3>
+          <p>Toca el cielo (el área brillante). Las estrellas fugaces dejan mensajes breves.</p>
+          <button type="button" class="star-tap-zone" id="star-tap-zone" aria-label="Tocar para hacer aparecer estrellas">
+            <span class="star-tap-zone__inner">Toca aquí</span>
+          </button>
+          <p class="star-msg glass-inline" id="star-msg" aria-live="polite"></p>
+        </div>
+        <div class="play-card glass-panel" data-aos="zoom-in" data-aos-delay="160">
+          <h3>Flores que giran</h3>
+          <p>Pasa el cursor (o el dedo) sobre las flores: giran como si te saludaran.</p>
+          <div class="spin-flowers" id="spin-flowers" aria-hidden="true"></div>
+        </div>
+      </div>
+      <p class="easter-hint" data-aos="fade-up">Pista: hay tres regalos en la primera sección. Y si presionas las teclas ↑↑↓↓ en orden… algo parpadea con cariño.</p>
+    </section>
+
+    <section class="closing-slideshow" data-aos="fade-up">
+      <div class="swiper closing-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="closing-slide glass-card">
+              <h3>Gratitud sutil</h3>
+              <p>Gracias por existir en el mundo de una forma que hace más amable el mapa de las personas que te conocen.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="closing-slide glass-card">
+              <h3>Un deseo tranquilo</h3>
+              <p>Que los días te devuelvan en calma lo que tú das en intención. Sin prisa, con belleza.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="closing-slide glass-card">
+              <h3>Para el recuerdo</h3>
+              <p>Esta página se apaga sola en el navegador, pero la idea queda: fuiste celebrada con respeto, humor bueno y admiración honesta.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination closing-swiper__pagination"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer" id="cierre">
+      <div class="footer__glow"></div>
+      <p class="footer__line" data-aos="fade-up">Con cariño y distancia elegante: un abrazo hecho de estrellas y buena intención.</p>
+      <p class="footer__sig" data-aos="fade-up" data-aos-delay="100">— Quien preparó este cielo para ti</p>
+      <button type="button" class="footer__replay glass-btn" id="replay-welcome">Volver a la bienvenida</button>
+    </footer>
+  </main>
+
+  <div id="toast-secret" class="toast-secret glass-panel" role="status" aria-live="polite" hidden></div>
+  <div id="konami-sparkle" class="konami-sparkle" aria-hidden="true" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
