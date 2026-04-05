@@ -180,28 +180,32 @@
     const add = () => {
       const sp = document.createElement("span");
       sp.className = "sp";
-      sp.style.left = `${15 + Math.random() * 70}%`;
-      sp.style.top = `${10 + Math.random() * 75}%`;
+      sp.style.left = `${12 + Math.random() * 76}%`;
+      sp.style.top = `${8 + Math.random() * 78}%`;
+      const sc = 0.75 + Math.random() * 0.85;
       els.roseSparkles.appendChild(sp);
       if (typeof gsap !== "undefined") {
         gsap.fromTo(
           sp,
-          { opacity: 0, scale: 0 },
+          { opacity: 0, scale: 0, rotation: 0 },
           {
             opacity: 1,
-            scale: 1,
-            duration: 0.35,
+            scale: sc,
+            rotation: (Math.random() - 0.5) * 40,
+            duration: 0.42,
+            ease: "power2.out",
             yoyo: true,
             repeat: 1,
+            yoyoEase: "power2.in",
             onComplete: () => sp.remove(),
           }
         );
       } else {
         sp.style.opacity = "1";
-        setTimeout(() => sp.remove(), 600);
+        setTimeout(() => sp.remove(), 700);
       }
     };
-    sparkleInterval = setInterval(add, 200);
+    sparkleInterval = setInterval(add, 145);
   }
 
   function stopSparkles() {
@@ -231,10 +235,11 @@
     if (sway) {
       introIdleTweens.push(
         gsap.to(sway, {
-          rotation: 2.2,
-          x: 6,
-          transformOrigin: "50% 88%",
-          duration: 4.2,
+          rotation: 3.2,
+          x: 9,
+          y: -5,
+          transformOrigin: "50% 92%",
+          duration: 3.6,
           ease: "sine.inOut",
           yoyo: true,
           repeat: -1,
@@ -245,8 +250,8 @@
       introIdleTweens.push(
         gsap.to(img, {
           filter:
-            "brightness(1.12) drop-shadow(0 0 32px rgba(255,236,160,0.95)) drop-shadow(0 14px 42px rgba(255,170,120,0.5))",
-          duration: 2.9,
+            "brightness(1.16) saturate(1.14) drop-shadow(0 0 40px rgba(255,244,200,1)) drop-shadow(0 0 56px rgba(255,214,130,0.65)) drop-shadow(0 18px 48px rgba(255,160,110,0.45))",
+          duration: 2.45,
           ease: "sine.inOut",
           yoyo: true,
           repeat: -1,

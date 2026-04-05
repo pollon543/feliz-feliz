@@ -339,8 +339,8 @@ a {
 
 .cine-bouquet__hero {
   position: relative;
-  width: 82%;
-  max-width: min(340px, 78vw);
+  width: 78%;
+  max-width: min(380px, 82vw);
   border-radius: 50% 50% 48% 52% / 42% 44% 56% 58%;
   overflow: visible;
 }
@@ -353,50 +353,53 @@ a {
 }
 
 .cine-bouquet__glow--outer {
-  inset: -32%;
+  inset: -38%;
   background:
-    radial-gradient(circle, rgba(255, 248, 200, 0.75) 0%, rgba(255, 220, 130, 0.45) 35%, transparent 70%);
-  filter: blur(32px);
-  animation: glow-pulse-outer 3.2s ease-in-out infinite;
+    radial-gradient(circle, rgba(255, 252, 220, 0.88) 0%, rgba(255, 228, 140, 0.55) 32%, rgba(255, 200, 100, 0.22) 55%, transparent 72%);
+  filter: blur(38px);
+  animation: glow-pulse-outer 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 .cine-bouquet__glow--inner {
-  inset: -12%;
-  background: radial-gradient(circle at 45% 40%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 236, 160, 0.65) 28%, transparent 62%);
-  filter: blur(14px);
-  animation: glow-pulse-inner 2.4s ease-in-out infinite 0.4s;
+  inset: -14%;
+  background:
+    radial-gradient(circle at 42% 38%, rgba(255, 255, 255, 1) 0%, rgba(255, 244, 200, 0.78) 22%, rgba(255, 220, 120, 0.45) 45%, transparent 62%);
+  filter: blur(16px);
+  animation: glow-pulse-inner 2.1s cubic-bezier(0.45, 0, 0.55, 1) infinite 0.35s;
 }
 
 .cine-bouquet__halo {
   position: absolute;
-  inset: -8%;
+  inset: -10%;
   border-radius: 50%;
   z-index: 1;
-  background: radial-gradient(circle, transparent 55%, rgba(255, 214, 100, 0.22) 58%, transparent 65%);
-  animation: halo-ring 4s ease-in-out infinite;
+  background:
+    radial-gradient(circle, transparent 48%, rgba(255, 236, 160, 0.35) 54%, rgba(255, 214, 100, 0.18) 60%, transparent 68%);
+  animation: halo-ring 3.4s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes glow-pulse-outer {
-  0%, 100% { opacity: 0.85; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.12); }
+  0%, 100% { opacity: 0.88; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 @keyframes glow-pulse-inner {
-  0%, 100% { opacity: 0.9; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.08); filter: blur(12px); }
+  0%, 100% { opacity: 0.92; transform: scale(1); filter: blur(16px); }
+  50% { opacity: 1; transform: scale(1.12); filter: blur(11px); }
 }
 
 @keyframes halo-ring {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.06); }
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.1); }
 }
 
 .cine-bouquet__sway {
   position: relative;
   z-index: 2;
-  transform-origin: 50% 88%;
-  animation: rose-sway 5.5s ease-in-out infinite;
+  transform-origin: 50% 92%;
+  animation: rose-cinematic 6.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
 }
 
 .cine-bouquet__img {
@@ -406,20 +409,39 @@ a {
   height: auto;
   object-fit: contain;
   filter:
-    drop-shadow(0 0 24px rgba(255, 230, 150, 0.85))
-    drop-shadow(0 12px 40px rgba(255, 170, 120, 0.45))
-    brightness(1.04);
-  animation: rose-light-breathe 3.8s ease-in-out infinite;
+    drop-shadow(0 0 28px rgba(255, 236, 170, 0.95))
+    drop-shadow(0 0 48px rgba(255, 210, 120, 0.55))
+    drop-shadow(0 16px 44px rgba(255, 165, 110, 0.38))
+    brightness(1.06)
+    saturate(1.08);
+  animation: rose-light-breathe 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: filter;
 }
 
-@keyframes rose-sway {
-  0%, 100% { transform: rotate(-1.6deg) translateX(-2px); }
-  50% { transform: rotate(1.8deg) translateX(3px); }
+@keyframes rose-cinematic {
+  0%, 100% { transform: rotate(-2.4deg) translateX(-5px) translateY(0) scale(1); }
+  20% { transform: rotate(0.8deg) translateX(6px) translateY(-4px) scale(1.015); }
+  45% { transform: rotate(2.8deg) translateX(4px) translateY(-8px) scale(1.022); }
+  70% { transform: rotate(-0.6deg) translateX(-5px) translateY(-3px) scale(1.01); }
 }
 
 @keyframes rose-light-breathe {
-  0%, 100% { filter: drop-shadow(0 0 22px rgba(255, 230, 150, 0.75)) drop-shadow(0 12px 36px rgba(255, 170, 120, 0.4)) brightness(1.02); }
-  50% { filter: drop-shadow(0 0 38px rgba(255, 236, 160, 1)) drop-shadow(0 16px 48px rgba(255, 190, 130, 0.55)) brightness(1.1); }
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 26px rgba(255, 236, 170, 0.85))
+      drop-shadow(0 0 42px rgba(255, 214, 130, 0.5))
+      drop-shadow(0 14px 40px rgba(255, 170, 120, 0.42))
+      brightness(1.04)
+      saturate(1.06);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 44px rgba(255, 248, 200, 1))
+      drop-shadow(0 0 64px rgba(255, 220, 140, 0.72))
+      drop-shadow(0 20px 56px rgba(255, 185, 130, 0.55))
+      brightness(1.14)
+      saturate(1.12);
+  }
 }
 
 /* Hojas decorativas que se mecen (al costado del tallo) */
@@ -439,16 +461,16 @@ a {
   left: -6%;
   bottom: 8%;
   transform-origin: 80% 90%;
-  transform: rotate(-35deg);
-  animation: leaf-sway-l 4.2s ease-in-out infinite;
+  transform: rotate(-38deg);
+  animation: leaf-sway-l 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 .rose-leaf--r {
   right: -4%;
   bottom: 18%;
   transform-origin: 20% 90%;
-  transform: rotate(42deg) scaleX(-1);
-  animation: leaf-sway-r 3.6s ease-in-out infinite 0.3s;
+  transform: rotate(46deg) scaleX(-1);
+  animation: leaf-sway-r 3.1s cubic-bezier(0.45, 0, 0.55, 1) infinite 0.25s;
 }
 
 .rose-leaf--ll {
@@ -474,13 +496,13 @@ a {
 }
 
 @keyframes leaf-sway-l {
-  0%, 100% { transform: rotate(-35deg); }
-  50% { transform: rotate(-22deg) translateY(-3px); }
+  0%, 100% { transform: rotate(-38deg); }
+  50% { transform: rotate(-18deg) translateY(-6px) translateX(2px); }
 }
 
 @keyframes leaf-sway-r {
-  0%, 100% { transform: rotate(42deg) scaleX(-1); }
-  50% { transform: rotate(30deg) scaleX(-1) translateY(-4px); }
+  0%, 100% { transform: rotate(46deg) scaleX(-1); }
+  50% { transform: rotate(26deg) scaleX(-1) translateY(-7px) translateX(-2px); }
 }
 
 .rose-leaf--ll {
@@ -492,13 +514,13 @@ a {
 }
 
 @keyframes leaf-sway-ll {
-  0%, 100% { transform: rotate(-55deg); }
-  50% { transform: rotate(-40deg) translate(-2px, -2px); }
+  0%, 100% { transform: rotate(-58deg); }
+  50% { transform: rotate(-36deg) translate(-3px, -5px); }
 }
 
 @keyframes leaf-sway-rr {
-  0%, 100% { transform: rotate(50deg) scaleX(-1); }
-  50% { transform: rotate(38deg) scaleX(-1) translate(2px, -3px); }
+  0%, 100% { transform: rotate(54deg) scaleX(-1); }
+  50% { transform: rotate(34deg) scaleX(-1) translate(3px, -6px); }
 }
 
 .cine-bouquet__blooms {
@@ -542,11 +564,13 @@ a {
 
 .rose-sparkles .sp {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 12px 2px rgba(255, 220, 140, 0.9);
+  background: radial-gradient(circle, #fff 0%, #fff8d4 40%, transparent 70%);
+  box-shadow:
+    0 0 14px 3px rgba(255, 236, 180, 1),
+    0 0 28px 6px rgba(255, 210, 120, 0.55);
   opacity: 0;
 }
 
