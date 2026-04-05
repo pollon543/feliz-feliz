@@ -3,248 +3,307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Una constelación dedicada con cariño." />
-  <title>Angela Ruth — Un espacio entre estrellas</title>
+  <meta name="description" content="Una experiencia luminosa e interactiva dedicada con admiración." />
+  <title>Angela Ruth — Experiencia en flor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="nebula nebula--1" aria-hidden="true"></div>
-  <div class="nebula nebula--2" aria-hidden="true"></div>
-  <div class="nebula nebula--3" aria-hidden="true"></div>
-  <div id="pehttp://127.0.0.1:3000/feliz-feliz/index.html?serverWindowId=22b57f5b-4b28-40e2-9e66-b76afb7914dbtals-container" aria-hidden="true"></div>
+  <div class="ambient-sky" aria-hidden="true"></div>
+  <div class="ambient-aurora" aria-hidden="true"></div>
+  <canvas id="cn-particles" aria-hidden="true"></canvas>
+  <div id="petals-global" aria-hidden="true"></div>
+  <div id="intro-gold-dust" class="intro-gold-dust" aria-hidden="true"></div>
 
-  <div id="cinematic-welcome" class="cinematic" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
-    <div class="cinematic__vignette"></div>
-    <div class="cinematic__content">
-      <p class="cinematic__hint">Una pequeña pausa en el universo</p>
-      <h1 id="welcome-title" class="cinematic__title">Angela Ruth</h1>
-      <p class="cinematic__subtitle">Hurtado Montenegro</p>
-      <p class="cinematic__tag">Donde la luz se detiene un instante para admirar lo hermoso</p>
-      <button type="button" class="cinematic__cta glass-btn" id="enter-experience">
-        <span>Comenzar el recorrido</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </button>
+  <!-- Capítulo 1: apertura cinematográfica -->
+  <div id="intro" class="cine-intro" role="dialog" aria-modal="true" aria-labelledby="intro-title-final">
+    <div class="cine-intro__light-wash" aria-hidden="true"></div>
+    <div class="cine-intro__vignette" aria-hidden="true"></div>
+
+    <button type="button" class="music-fab" id="btn-music-intro" aria-pressed="false" title="Activar o silenciar música ambiental">
+      <span class="music-fab__icon" aria-hidden="true">♪</span>
+      <span class="music-fab__txt">Música</span>
+    </button>
+
+    <!-- Ornamentos románticos en las 4 esquinas -->
+    <div class="intro-corner intro-corner--tl" aria-hidden="true">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="intro-corner__svg">
+        <defs>
+          <linearGradient id="ig-tl-a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff4d4"/><stop offset="0.5" stop-color="#ffd27a"/><stop offset="1" stop-color="#ffc4dd"/></linearGradient>
+          <linearGradient id="ig-tl-s" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4a84b" stop-opacity="0.9"/><stop offset="1" stop-color="#ffc4a8" stop-opacity="0.5"/></linearGradient>
+        </defs>
+        <path d="M8 8c18 8 32 22 38 42M8 8c12 24 10 48-2 68M8 8c28 4 52 2 72-6" stroke="url(#ig-tl-s)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M22 18c8-6 18-4 22 4 4-10 18-12 26-2 6 8 2 20-8 26-12 8-28 14-40 24" fill="url(#ig-tl-a)" opacity="0.55"/>
+        <circle cx="28" cy="24" r="3" fill="#fff8e8" opacity="0.9"/>
+        <path d="M58 4c-4 12 2 26 14 32M70 6l8 20M52 14l-6 18" stroke="url(#ig-tl-a)" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+    </div>
+    <div class="intro-corner intro-corner--tr" aria-hidden="true">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="intro-corner__svg">
+        <defs>
+          <linearGradient id="ig-tr-a" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#ffe8f4"/><stop offset="0.6" stop-color="#ffd27a"/><stop offset="1" stop-color="#fff4d4"/></linearGradient>
+          <linearGradient id="ig-tr-s" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#e8b4c8"/><stop offset="1" stop-color="#d4a84b"/></linearGradient>
+        </defs>
+        <path d="M112 8c-18 8-32 22-38 42M112 8c-12 24-10 48 2 68M112 8c-28 4-52 2-72-6" stroke="url(#ig-tr-s)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M98 18c-8-6-18-4-22 4-4-10-18-12-26-2-6 8-2 20 8 26 12 8 28 14 40 24" fill="url(#ig-tr-a)" opacity="0.5"/>
+        <path d="M62 4c4 12-2 26-14 32M50 6l-8 20M68 14l6 18" stroke="url(#ig-tr-a)" stroke-width="0.9" stroke-linecap="round" opacity="0.65"/>
+        <circle cx="92" cy="22" r="2.5" fill="#fff" opacity="0.85"/>
+      </svg>
+    </div>
+    <div class="intro-corner intro-corner--bl" aria-hidden="true">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="intro-corner__svg">
+        <defs>
+          <linearGradient id="ig-bl-a" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#d8f4ff"/><stop offset="0.5" stop-color="#ffe566"/><stop offset="1" stop-color="#ffd4c4"/></linearGradient>
+        </defs>
+        <path d="M8 112c14-6 28-4 40 6M8 112c8-22 24-38 46-44M8 112c20 8 40 6 58-4" stroke="#c9a227" stroke-opacity="0.45" stroke-width="1.1" stroke-linecap="round"/>
+        <path d="M24 98c10 8 22 6 30-4 6 12 22 14 32 4 8-8 6-22-4-30-10-10-26-18-40-26" fill="url(#ig-bl-a)" opacity="0.45"/>
+        <path d="M18 88c6 10 4 22-4 30M32 82l14 12" stroke="#e8b4c8" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="intro-corner intro-corner--br" aria-hidden="true">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="intro-corner__svg">
+        <defs>
+          <linearGradient id="ig-br-a" x1="1" y1="1" x2="0" y2="0"><stop stop-color="#ffc4dd"/><stop offset="0.4" stop-color="#ffd27a"/><stop offset="1" stop-color="#fffefb"/></linearGradient>
+        </defs>
+        <path d="M112 112c-14-6-28-4-40 6M112 112c-8-22-24-38-46-44M112 112c-20 8-40 6-58-4" stroke="#d4a84b" stroke-opacity="0.5" stroke-width="1.1" stroke-linecap="round"/>
+        <path d="M96 98c-10 8-22 6-30-4-6 12-22 14-32 4-8-8-6-22 4-30 10-10 26-18 40-26" fill="url(#ig-br-a)" opacity="0.48"/>
+        <circle cx="98" cy="96" r="2" fill="#fff8e8" opacity="0.9"/>
+        <path d="M102 88l-10 8M88 100l12 6" stroke="#ff9ec7" stroke-width="0.7" stroke-linecap="round" opacity="0.55"/>
+      </svg>
+    </div>
+
+    <div class="cine-intro__center">
+      <div class="cine-intro__hero-slot">
+      <svg class="cine-heart" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <linearGradient id="hs" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff4d4" /><stop offset="40%" stop-color="#ffd27a" /><stop offset="100%" stop-color="#ff9ec7" />
+          </linearGradient>
+          <radialGradient id="hf" cx="38%" cy="32%" r="72%">
+            <stop offset="0%" stop-color="#fffefb" /><stop offset="50%" stop-color="#ffe8f4" /><stop offset="100%" stop-color="#ffc4d8" />
+          </radialGradient>
+          <radialGradient id="hsh" cx="32%" cy="28%" r="45%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.9" /><stop offset="100%" stop-color="#fff" stop-opacity="0" />
+          </radialGradient>
+          <filter id="hblur"><feGaussianBlur in="SourceGraphic" stdDeviation="1" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+        </defs>
+        <path id="heart-fill" fill="url(#hf)" opacity="0" d="M100 172 C48 118 22 88 22 58 C22 32 40 14 64 14 C80 14 92 26 100 38 C108 26 120 14 136 14 C160 14 178 34 178 60 C178 90 152 120 100 172 Z" />
+        <ellipse id="heart-shine" cx="78" cy="62" rx="36" ry="42" fill="url(#hsh)" opacity="0" />
+        <path id="heart-path" fill="none" stroke="url(#hs)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" filter="url(#hblur)" d="M100 172 C48 118 22 88 22 58 C22 32 40 14 64 14 C80 14 92 26 100 38 C108 26 120 14 136 14 C160 14 178 34 178 60 C178 90 152 120 100 172 Z" />
+      </svg>
+
+      <div class="cine-bouquet" id="bouquet-root" aria-hidden="true">
+        <div class="cine-bouquet__scale" id="bouquet-scale">
+        <div class="cine-bouquet__blooms" aria-hidden="true">
+          <span class="cine-bloom"></span><span class="cine-bloom"></span><span class="cine-bloom"></span>
+          <span class="cine-bloom"></span><span class="cine-bloom"></span><span class="cine-bloom"></span>
+          <span class="cine-bloom"></span><span class="cine-bloom"></span>
+        </div>
+        <div class="cine-bouquet__hero">
+          <div class="cine-bouquet__glow cine-bouquet__glow--outer"></div>
+          <div class="cine-bouquet__glow cine-bouquet__glow--inner"></div>
+          <div class="cine-bouquet__halo"></div>
+          <span class="rose-leaf rose-leaf--l" aria-hidden="true"></span>
+          <span class="rose-leaf rose-leaf--r" aria-hidden="true"></span>
+          <span class="rose-leaf rose-leaf--ll" aria-hidden="true"></span>
+          <span class="rose-leaf rose-leaf--rr" aria-hidden="true"></span>
+          <div class="cine-bouquet__sway">
+            <img id="bouquet-photo" class="cine-bouquet__img" src="assets/yellow-rose.png" alt="" width="1200" height="1600" decoding="async" />
+          </div>
+          <div id="rose-sparkles" class="rose-sparkles"></div>
+        </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="cine-intro__copy" id="intro-copy" hidden>
+        <p class="cine-intro__line">Algunas experiencias bonitas merecen comenzar de una forma especial.</p>
+        <h1 id="intro-title-final" class="cine-intro__name">Angela Ruth Hurtado Montenegro</h1>
+        <p class="cine-intro__hint cine-intro__hint--tags" aria-label="Tres ideas que guían esta experiencia">
+          <span class="hint-chip">Intención</span><span class="hint-chip">Luz</span><span class="hint-chip">Detalle</span>
+        </p>
+        <button type="button" class="btn-cine" id="btn-enter">Entrar a la experiencia</button>
+      </div>
     </div>
   </div>
 
-  <header class="site-header glass-panel" id="site-header" hidden>
-    <span class="site-header__brand">A.R.H.M.</span>
-    <nav class="site-header__nav" aria-label="Secciones">
-      <a href="#presentacion">Presentación</a>
-      <a href="#constelacion">Constelación</a>
-      <a href="#dialogos">Diálogos</a>
-      <a href="#jardines">Jardines</a>
-      <a href="#cierre">Cierre</a>
-    </nav>
+  <header class="orbit-header" id="main-header" hidden>
+    <div class="orbit-header__row">
+      <span class="orbit-brand" aria-label="Inicio"><span class="orbit-brand__flor" aria-hidden="true"></span></span>
+      <nav class="orbit-nav" aria-label="Capítulos">
+        <a href="#cap-luz">Luz</a>
+        <a href="#cap-emociones">Emociones</a>
+        <a href="#cap-jardin">Jardín</a>
+        <a href="#cap-momentos">Momentos</a>
+        <a href="#cap-regalos">Regalos</a>
+        <a href="#cap-historia">Historia</a>
+        <a href="#cap-cierre">Cierre</a>
+      </nav>
+      <button type="button" class="music-fab music-fab--compact" id="btn-music-main" aria-pressed="false"><span class="music-fab__icon">♪</span></button>
+    </div>
+    <div class="read-progress" id="read-progress" aria-hidden="true"><span class="read-progress__fill" id="read-progress-fill"></span></div>
   </header>
 
-  <main id="main-content" class="main" hidden>
-    <section class="hero" id="presentacion">
-      <div class="hero__flowers" aria-hidden="true"></div>
-      <div class="hero__glow"></div>
-      <div class="hero__inner" data-aos="fade-up" data-aos-duration="1200">
-        <p class="eyebrow">Presentación especial</p>
-        <h2 class="hero__title">Hay personas que no necesitan discursos largos</h2>
-        <p class="hero__lead">Basta con cruzarse su camino para entender que el mundo, a veces, guarda detalles perfectos: una risa a tiempo, una idea clara, una calma que contagia.</p>
-        <p class="hero__name">Angela Ruth Hurtado Montenegro</p>
-        <p class="hero__note">Esto es un homenaje silencioso a esa mezcla rara de fuerza y dulzura que hace más bonito el día de quienes la rodean.</p>
+  <main id="main-stage" class="main-stage" hidden>
+    <!-- Escena visual · luz -->
+    <section class="cap cap--luz living-scene" id="cap-luz">
+      <span class="sr-only">Segunda escena. Ambiente luminoso y floral.</span>
+      <div class="living-scene__orbit" aria-hidden="true"></div>
+      <div class="floral-field" aria-hidden="true">
+        <span class="floral-field__bloom"></span><span class="floral-field__bloom"></span><span class="floral-field__bloom"></span>
+        <span class="floral-field__bloom floral-field__bloom--sm"></span><span class="floral-field__bloom floral-field__bloom--sm"></span>
       </div>
-      <div class="hero__gifts" aria-hidden="true">
-        <button type="button" class="gift gift--1" data-secret="secret-1" aria-label="Regalo decorativo, tocar para sorpresa"></button>
-        <button type="button" class="gift gift--2" data-secret="secret-2" aria-label="Regalo decorativo, tocar para sorpresa"></button>
-        <button type="button" class="gift gift--3" data-secret="secret-3" aria-label="Regalo decorativo, tocar para sorpresa"></button>
+      <div class="cap__bg parallax-slow" data-parallax="0.06"></div>
+      <div class="cap__inner cap__inner--mosaic">
+        <header class="scene-head">
+          <span class="scene-index" aria-hidden="true">02</span>
+          <h2 class="cap__title cap__title--display" data-aos="fade-up">
+            <span class="title-frag">Hay personas</span>
+            <span class="title-frag title-frag--gold">que inspiran</span>
+            <span class="title-frag">detalles así de bonitos.</span>
+          </h2>
+        </header>
+        <div class="mosaic-grid">
+          <div class="hero-bloom" data-aos="zoom-in" data-aos-duration="1000" aria-hidden="true">
+            <div class="hero-bloom__core"></div>
+            <div class="hero-bloom__ring"></div>
+          </div>
+          <div class="pulse-tile pulse-tile--a" data-aos="fade-up" data-aos-delay="0"><span class="pulse-tile__glyph" aria-hidden="true">✦</span><p class="pulse-tile__txt">No todo lo especial necesita explicarse con demasiadas palabras.</p></div>
+          <div class="pulse-tile pulse-tile--b" data-aos="fade-up" data-aos-delay="80"><span class="pulse-tile__glyph" aria-hidden="true">◇</span><p class="pulse-tile__txt">A veces, la admiración se nota mejor en lo que uno crea.</p></div>
+          <div class="pulse-tile pulse-tile--c" data-aos="fade-up" data-aos-delay="160"><span class="pulse-tile__glyph" aria-hidden="true">✧</span><p class="pulse-tile__txt">Existen presencias que vuelven más bonito el pensamiento.</p></div>
+          <div class="pulse-tile pulse-tile--d" data-aos="fade-up" data-aos-delay="240"><span class="pulse-tile__glyph" aria-hidden="true">❋</span><p class="pulse-tile__txt">Hay sonrisas que merecen una experiencia a su altura.</p></div>
+        </div>
+      </div>
+      <div class="float-decor float-decor--1" aria-hidden="true"></div>
+      <div class="float-decor float-decor--2" aria-hidden="true"></div>
+    </section>
+
+    <!-- Galería viva -->
+    <section class="cap cap--emociones" id="cap-emociones">
+      <div class="cap__inner cap__inner--wide">
+        <span class="sr-only">Tercera escena. Galería interactiva de sensaciones.</span>
+        <header class="scene-head scene-head--center">
+          <span class="scene-index" aria-hidden="true">03</span>
+          <h2 class="cap__title cap__title--display" data-aos="fade-up"><span class="title-frag title-frag--gold">Sensaciones</span><span class="title-frag">en movimiento</span></h2>
+          <div class="hint-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        </header>
+        <p class="sr-only">Toca cada esfera para ver una frase breve.</p>
+        <div class="bubble-grid" id="bubble-grid"></div>
       </div>
     </section>
 
-    <section class="slideshow-section" id="constelacion">
-      <div class="section-head" data-aos="fade-up">
-        <p class="eyebrow">Frases que quedan</p>
-        <h2 class="section-title">Como estrellas que no se apagan</h2>
-      </div>
-      <div class="swiper phrase-swiper" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <article class="phrase-card glass-card">
-              <blockquote>“La elegancia no grita: se nota en los detalles.”</blockquote>
-              <p class="phrase-card__meta">— Para quien lleva el buen gusto en el gesto</p>
-            </article>
-          </div>
-          <div class="swiper-slide">
-            <article class="phrase-card glass-card">
-              <blockquote>“Una sonrisa honesta vale más que mil planes perfectos.”</blockquote>
-              <p class="phrase-card__meta">— Pequeño recordatorio cósmico</p>
-            </article>
-          </div>
-          <div class="swiper-slide">
-            <article class="phrase-card glass-card">
-              <blockquote>“Quien ilumina sin esfuerzo deja huella sin ruido.”</blockquote>
-              <p class="phrase-card__meta">— Admiración en voz baja</p>
-            </article>
-          </div>
-          <div class="swiper-slide">
-            <article class="phrase-card glass-card">
-              <blockquote>“El humor sano es magia: convierte un martes en historia.”</blockquote>
-              <p class="phrase-card__meta">— Chiste de universo aprobado</p>
-            </article>
-          </div>
-        </div>
-        <div class="swiper-pagination phrase-swiper__pagination"></div>
-        <div class="swiper-button-prev phrase-swiper__nav"></div>
-        <div class="swiper-button-next phrase-swiper__nav"></div>
-      </div>
-    </section>
-
-    <section class="qualities" id="cualidades">
-      <div class="section-head" data-aos="fade-up">
-        <p class="eyebrow">Tarjetas de luz</p>
-        <h2 class="section-title">Cualidades que inspiran cariño y respeto</h2>
-      </div>
-      <div class="qualities__grid">
-        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="0">
-          <div class="quality-card__icon" aria-hidden="true">✦</div>
-          <h3>Claridad</h3>
-          <p>Piensa con orden y eso tranquiliza a quien escucha.</p>
-        </article>
-        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="80">
-          <div class="quality-card__icon" aria-hidden="true">❋</div>
-          <h3>Calidez</h3>
-          <p>La amabilidad que no presume, pero se siente.</p>
-        </article>
-        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="160">
-          <div class="quality-card__icon" aria-hidden="true">✧</div>
-          <h3>Autenticidad</h3>
-          <p>Ser uno mismo sin dramatizar: un arte poco común.</p>
-        </article>
-        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="240">
-          <div class="quality-card__icon" aria-hidden="true">✿</div>
-          <h3>Resiliencia suave</h3>
-          <p>Se levanta con gracia, aunque el día pese.</p>
-        </article>
-        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="320">
-          <div class="quality-card__icon" aria-hidden="true">☆</div>
-          <h3>Brillo natural</h3>
-          <p>No necesita focos: ya trae los suyos.</p>
-        </article>
-        <article class="quality-card glass-card" data-aos="flip-left" data-aos-delay="400">
-          <div class="quality-card__icon" aria-hidden="true">◇</div>
-          <h3>Sentido del humor</h3>
-          <p>El tipo que salva reuniones y arregla el ánimo.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="interactive" id="dialogos">
-      <div class="section-head" data-aos="fade-up">
-        <p class="eyebrow">Diálogos juguetones</p>
-        <h2 class="section-title">Preguntas con respuestas que animan</h2>
-        <p class="section-lead">Sin trampa, sin presión: solo curiosidad y una sonrisa de fondo.</p>
-      </div>
-
-      <div class="quiz-block glass-panel" data-aos="fade-up">
-        <h3 class="quiz-block__q">Si el día fuera una bebida, ¿cuál sería el tuyo hoy?</h3>
-        <div class="option-cards" role="group" aria-label="Opciones">
-          <button type="button" class="option-card" data-reply="reply-a">Café que despierta galaxias</button>
-          <button type="button" class="option-card" data-reply="reply-b">Té calmante con buena conversación</button>
-          <button type="button" class="option-card" data-reply="reply-c">Jugo de fruta con playlist feliz</button>
-        </div>
-        <div class="quiz-reply" id="quiz-reply-1" hidden></div>
-      </div>
-
-      <div class="quiz-block glass-panel" data-aos="fade-up" data-aos-delay="50">
-        <h3 class="quiz-block__q">¿Cuánta luz merece tu semana? (desliza con honestidad cósmica)</h3>
-        <label class="slider-wrap">
-          <span class="slider-wrap__label">Suave</span>
-          <input type="range" class="cosmic-slider" id="light-slider" min="0" max="100" value="72" />
-          <span class="slider-wrap__label">Radiante</span>
-        </label>
-        <p class="slider-output glass-inline" id="slider-output">Tu semana: 72% de constelación aprobada por el universo.</p>
-      </div>
-
-      <div class="quiz-block glass-panel" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="quiz-block__q">Chiste ligero: ¿por qué las estrellas no usan redes sociales?</h3>
-        <div class="option-cards">
-          <button type="button" class="option-card joke-btn" data-joke="a">Porque ya tienen muchos seguidores en el cielo</button>
-          <button type="button" class="option-card joke-btn" data-joke="b">Porque el WiFi del espacio es lento</button>
-        </div>
-        <p class="joke-punchline" id="joke-punchline" hidden></p>
-      </div>
-    </section>
-
-    <section class="playground" id="jardines">
-      <div class="section-head" data-aos="fade-up">
-        <p class="eyebrow">Jardines y cielo</p>
-        <h2 class="section-title">Mini interacciones para el alma curiosa</h2>
-      </div>
-      <div class="playground__grid">
-        <div class="play-card glass-panel" data-aos="zoom-in">
-          <h3>Atrapa pétalos</h3>
-          <p>Haz clic en los pétalos que caen. Cada uno susurra algo bonito.</p>
-          <div class="petal-game" id="petal-game" aria-label="Zona de juego de pétalos"></div>
-          <p class="petal-game__msg" id="petal-msg" aria-live="polite"></p>
-        </div>
-        <div class="play-card glass-panel" data-aos="zoom-in" data-aos-delay="80">
-          <h3>Cuenta estrellas</h3>
-          <p>Toca el cielo (el área brillante). Las estrellas fugaces dejan mensajes breves.</p>
-          <button type="button" class="star-tap-zone" id="star-tap-zone" aria-label="Tocar para hacer aparecer estrellas">
-            <span class="star-tap-zone__inner">Toca aquí</span>
-          </button>
-          <p class="star-msg glass-inline" id="star-msg" aria-live="polite"></p>
-        </div>
-        <div class="play-card glass-panel" data-aos="zoom-in" data-aos-delay="160">
-          <h3>Flores que giran</h3>
-          <p>Pasa el cursor (o el dedo) sobre las flores: giran como si te saludaran.</p>
-          <div class="spin-flowers" id="spin-flowers" aria-hidden="true"></div>
-        </div>
-      </div>
-      <p class="easter-hint" data-aos="fade-up">Pista: hay tres regalos en la primera sección. Y si presionas las teclas ↑↑↓↓ en orden… algo parpadea con cariño.</p>
-    </section>
-
-    <section class="closing-slideshow" data-aos="fade-up">
-      <div class="swiper closing-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="closing-slide glass-card">
-              <h3>Gratitud sutil</h3>
-              <p>Gracias por existir en el mundo de una forma que hace más amable el mapa de las personas que te conocen.</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="closing-slide glass-card">
-              <h3>Un deseo tranquilo</h3>
-              <p>Que los días te devuelvan en calma lo que tú das en intención. Sin prisa, con belleza.</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="closing-slide glass-card">
-              <h3>Para el recuerdo</h3>
-              <p>Esta página se apaga sola en el navegador, pero la idea queda: fuiste celebrada con respeto, humor bueno y admiración honesta.</p>
+    <!-- Jardín interactivo -->
+    <section class="cap cap--jardin" id="cap-jardin">
+      <div class="cap__inner cap__inner--quiz">
+        <span class="sr-only">Cuarta escena. Preguntas suaves tipo jardín.</span>
+        <header class="scene-head scene-head--center">
+          <span class="scene-index" aria-hidden="true">04</span>
+          <h2 class="cap__title cap__title--display"><span class="title-frag">Jardín</span><span class="title-frag title-frag--gold">de curiosidad</span></h2>
+        </header>
+        <div class="garden-stage">
+          <div class="garden-stage__vine garden-stage__vine--l" aria-hidden="true"></div>
+          <div class="garden-stage__vine garden-stage__vine--r" aria-hidden="true"></div>
+          <div class="garden-stage__dots" aria-hidden="true"></div>
+          <div class="quiz-shell glass-panel garden-panel">
+            <div class="quiz-progress"><span class="quiz-progress__bar" id="quiz-bar"></span></div>
+            <p class="quiz-step" id="quiz-step-label">1 / 8</p>
+            <div id="quiz-stage"></div>
+            <div class="quiz-feedback" id="quiz-feedback" hidden></div>
+            <div class="quiz-nav">
+              <button type="button" class="btn-soft" id="quiz-prev" disabled>Anterior</button>
+              <button type="button" class="btn-cine btn-cine--small" id="quiz-next">Siguiente</button>
             </div>
           </div>
         </div>
-        <div class="swiper-pagination closing-swiper__pagination"></div>
       </div>
     </section>
 
-    <footer class="site-footer" id="cierre">
-      <div class="footer__glow"></div>
-      <p class="footer__line" data-aos="fade-up">Con cariño y distancia elegante: un abrazo hecho de estrellas y buena intención.</p>
-      <p class="footer__sig" data-aos="fade-up" data-aos-delay="100">— Quien preparó este cielo para ti</p>
-      <button type="button" class="footer__replay glass-btn" id="replay-welcome">Volver a la bienvenida</button>
+    <!-- Pausa juguetona -->
+    <section class="cap cap--momentos" id="cap-momentos">
+      <div class="cap__inner">
+        <span class="sr-only">Quinta escena. Momentos ligeros.</span>
+        <header class="scene-head scene-head--center">
+          <span class="scene-index" aria-hidden="true">05</span>
+          <h2 class="cap__title cap__title--display" data-aos="fade-up"><span class="title-frag title-frag--gold">Pausa</span><span class="title-frag">dulce</span></h2>
+        </header>
+        <div class="playful-zone" data-aos="zoom-in">
+          <div class="playful-sticker" id="playful-card" role="status"></div>
+          <button type="button" class="btn-soft" id="btn-playful-next">Otra sonrisa ✦</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tesoros táctiles -->
+    <section class="cap cap--regalos" id="cap-regalos">
+      <div class="ribbon-deco ribbon-deco--tl" aria-hidden="true"></div>
+      <div class="ribbon-deco ribbon-deco--br" aria-hidden="true"></div>
+      <div class="cap__inner cap__inner--wide">
+        <span class="sr-only">Sexta escena. Objetos para tocar y revelar mensajes.</span>
+        <header class="scene-head scene-head--center">
+          <span class="scene-index" aria-hidden="true">06</span>
+          <h2 class="cap__title cap__title--display" data-aos="fade-up"><span class="title-frag">Toca.</span><span class="title-frag title-frag--gold">Descubre.</span><span class="title-frag">Sorpréndete.</span></h2>
+        </header>
+        <div class="gift-grid" id="gift-grid"></div>
+        <div class="petal-tap-zone" id="petal-tap-zone" aria-label="Zona de pétalos interactivos">
+          <span class="petal-tap-zone__hint">Pétalos vivos — tócalos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia en planos -->
+    <section class="cap cap--historia" id="cap-historia">
+      <div class="cap__inner">
+        <span class="sr-only">Séptima escena. Carrusel visual tipo película.</span>
+        <header class="scene-head scene-head--center">
+          <span class="scene-index" aria-hidden="true">07</span>
+          <h2 class="cap__title cap__title--display" data-aos="fade-up"><span class="title-frag">Planos</span><span class="title-frag title-frag--gold">en movimiento</span></h2>
+        </header>
+        <div class="swiper film-swiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="film-scene"><div class="film-scene__orb"></div><h3>Luz · corazón · flores</h3><p class="film-scene__tag">Un inicio que brilla.</p></div></div>
+            <div class="swiper-slide"><div class="film-scene"><div class="film-scene__orb film-scene__orb--2"></div><h3>Cualidades flotando</h3><p class="film-scene__tag">Lo bello respira.</p></div></div>
+            <div class="swiper-slide"><div class="film-scene"><div class="film-scene__orb film-scene__orb--3"></div><h3>Preguntas suaves</h3><p class="film-scene__tag">Explorar con calma.</p></div></div>
+            <div class="swiper-slide"><div class="film-scene"><div class="film-scene__orb film-scene__orb--4"></div><h3>Sorpresas guardadas</h3><p class="film-scene__tag">Detalles que susurran.</p></div></div>
+            <div class="swiper-slide"><div class="film-scene"><div class="film-scene__orb film-scene__orb--5"></div><h3>Cierre luminoso</h3><p class="film-scene__tag">Impresiones que se quedan.</p></div></div>
+          </div>
+          <div class="swiper-pagination film-swiper__pag"></div>
+          <div class="swiper-button-prev film-swiper__nav"></div>
+          <div class="swiper-button-next film-swiper__nav"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cierre visual -->
+    <footer class="cap cap--cierre" id="cap-cierre">
+      <div class="finale-aurora" aria-hidden="true"></div>
+      <div class="cap__inner cap__inner--finale">
+        <span class="sr-only">Última escena. Cierre.</span>
+        <span class="scene-index scene-index--finale" aria-hidden="true">08</span>
+        <ul class="finale-mosaic">
+          <li class="finale-shard" data-aos="fade-up"><span class="finale-shard__petal" aria-hidden="true"></span><span class="finale-shard__txt">Hay personas que inspiran experiencias así de especiales.</span></li>
+          <li class="finale-shard" data-aos="fade-up" data-aos-delay="60"><span class="finale-shard__petal finale-shard__petal--b" aria-hidden="true"></span><span class="finale-shard__txt">Gracias por recorrer algo hecho con tanta dedicación.</span></li>
+          <li class="finale-shard finale-shard--accent" data-aos="fade-up" data-aos-delay="120"><span class="finale-shard__petal finale-shard__petal--c" aria-hidden="true"></span><span class="finale-shard__txt">A veces, lo bonito no está solo en el detalle, sino en todo lo que quiso transmitir.</span></li>
+        </ul>
+        <p class="finale-sig"><span class="finale-sig__mark" aria-hidden="true">✦</span> Con admiración para <strong>Angela Ruth Hurtado Montenegro</strong></p>
+        <button type="button" class="btn-cine btn-cine--ghost" id="btn-relive">Volver a vivir la experiencia</button>
+      </div>
     </footer>
   </main>
 
-  <div id="toast-secret" class="toast-secret glass-panel" role="status" aria-live="polite" hidden></div>
-  <div id="konami-sparkle" class="konami-sparkle" aria-hidden="true" hidden></div>
+  <div id="global-toast" class="global-toast" role="status" aria-live="polite" hidden></div>
+
+  <audio id="ambient-audio" loop preload="metadata" playsinline>
+    <source src="assets/ambient.mp3" type="audio/mpeg" />
+  </audio>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
